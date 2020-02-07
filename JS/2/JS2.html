@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="JS2.css">
+  
+  <body>
+    <div class="mainContent">
+      <div class="p0">
+         <h1 id="Header">Header</h1>
+      </div>
+      <div class="p2">
+        <h1 id="MainContent">Main Content</h1>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+          $(".p2").hide();
+    });
+    $(function() {
+          $(".p0").on("click", function() {
+                      $(".p2").slideDown();
+          });
+    });
+    </script>
+  </html>

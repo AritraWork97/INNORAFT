@@ -1,0 +1,56 @@
+p{
+    text-align:left;
+}
+
+
+body{
+    background:red;
+    color:white;
+}
+
+.p0{
+      margin:8% 5%;
+}
+
+
+.p1{
+	  float: left;
+      width: 32.3%;
+      background: rgb(139, 27, 27);;
+      margin-right: 3px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      padding-left: 35px;
+}
+
+.p2{
+     float: left;
+     overflow: auto;
+     width: 32.3%;
+     background: rgb(139, 27, 27);;
+     margin-right: 3px;
+     padding-top: 50px;
+     padding-bottom: 50px;
+     padding-left: 55px;
+}
+
+
+.p3{
+    overflow: auto;
+    float: left;
+    width: 32.3%;
+    background: rgb(139, 27, 27);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 55px;
+}
+
+
+.flex{
+     display:flex;
+     position:absolute;
+     width:100%;
+     bottom:0px;
+     height: 45%;
+     left: 0px;
+}

@@ -1,0 +1,43 @@
+<html>
+  <link rel="stylesheet" type="text/css" href="JS5.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <body>
+      <div class="mainContent">
+      <div class="p0">
+         <h1 id="Header">Header</h1>
+      </div>
+      <div class="p1">
+         <h1 id="Sidebar">SideBar</h1>
+      </div>
+      <div class="p2">
+          <h1 id="MainContent">Main Content</h1>
+      </div>
+      <div class="p4">
+          <h1 id="ExtraContent">Extra Content</h1>
+      </div>
+      <div class="clearfix"></div>
+      <div class="p3">
+          <h1 id="Footer">Footer</h1>
+      </div>
+    </div>
+    <div class="popup_alert">
+      <img class="topright" src="images/close.png">
+        <h1 class="text-decoration"> I am a popup</h1>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+          $(".popup_alert").hide();
+    });
+   $(function() {
+          $(".p3").click(() => {
+                $(".popup_alert").show();
+                $(".topright").show();
+            });
+          $(".topright").click(() => {
+            $(".popup_alert").hide();
+          })
+   })
+  </script>
+</html>
