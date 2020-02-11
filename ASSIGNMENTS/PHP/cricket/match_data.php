@@ -1,28 +1,31 @@
 <?php
 
+    function get_random_number()
+    {
+        return rand(1,100);
+
+    }
+
     $runs_scored = array(
-        "team1" => array(
-            "Aritra" => "75",
-            "Tanaya" => "55",
-            "Atrima" => "74",
-            "Arnab" => "88",
-            "Swaraj" => "65",
-            "Debadrita" => "75",
-            "Avirup" => "89",
-            "Anwesha Sharma Sarkar" => "75"
-        ),
         "team2" => array(
-            "Aritra" => "75",
-            "Tanaya" => "90",
-            "Atrima" => "74",
-            "Arnab" => "88",
-            "Swaraj" => "65",
-            "Debadrita" => "75",
-            "Avirup" => "82",
-            "Anwesha Sharma Sarkar" => "75"
+            "Aritra" => get_random_number(),
+            "Tanaya" => get_random_number(),
+            "Atrima" => get_random_number(),
+            "Arnab" =>  get_random_number(),
+            "Swaraj" => get_random_number(),
+            "Debadrita" => get_random_number(),
+            "Avirup" => get_random_number(),
+            "Anwesha Sharma Sarkar" => get_random_number() 
+        ),
+        "team1" => array(
+            "Aritra" => get_random_number(),
+            "Tanaya" => get_random_number(),
+            "Atrima" => get_random_number(),
+            "Arnab" => get_random_number(),
+            "Swaraj" => get_random_number(),
+            "Debadrita" => get_random_number(),
+            "Avirup" => get_random_number(),
+            "Anwesha Sharma Sarkar" => get_random_number()
         ),
     );
-
-
-
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-    include 'match_data.php';
-    //include 'match.php';
+    include_once 'match_data.php';
+    include_once 'match.php';
 
     function get_highest_scorer_in_a_match()
     {
@@ -84,8 +84,9 @@
             $i++;
             
         }
-        arsort($total_runs);
-        return (array_slice($total_runs,0,1))[0];
+        arsort($total_runs[0]);
+        //print_r($total_runs);
+        return (array_slice($total_runs,0,1)[0]);
 
    }
     

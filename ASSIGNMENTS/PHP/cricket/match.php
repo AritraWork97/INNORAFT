@@ -1,9 +1,9 @@
 <?php
     include '../vendor/autoload.php';
 
-    include 'team.php';
-    include 'match_data.php';
-    include 'match_ancillary_functions.php';
+    include_once 'team.php';
+    include_once 'match_data.php';
+    include_once 'match_ancillary_functions.php';
     
     class match
     {
