@@ -55,7 +55,7 @@ echo "<table border='2' class='stats' cellspacing='0'>
                      echo "</tr>"; 
             }
 
-//print_r($subject_arr_objects);
+print_r($student_arr_objects);
 
 
 

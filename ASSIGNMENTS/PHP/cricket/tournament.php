@@ -1,16 +1,10 @@
 <?php
 
 include 'match.php';
+include 'data.php';
 
-class tournamnet
-{
-    function test(){
-        $obj = new match();
-        print_r($obj->create_obj());
-    }
-}
+$matches = new match($team_1, $team_2);
 
-$obj1 = new tournamnet();
-print_r($obj1->test());
+print_r($matches->team_b);
 
 ?>
