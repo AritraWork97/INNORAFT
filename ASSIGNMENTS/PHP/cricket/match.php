@@ -1,10 +1,7 @@
 <?php
-    include '../vendor/autoload.php';
 
-    include_once 'team.php';
-    include_once 'match_data.php';
-    include_once 'match_ancillary_functions.php';
-    
+    namespace match;
+
     class match
     {
         public $team_a = array();

@@ -3,17 +3,22 @@
 
 include '../vendor/autoload.php';
 
-include_once 'match.php';
-include_once 'data.php';
-include_once 'team.php';
+include 'loader.php';
 
+include_once 'data.php';
+include_once 'match_data.php';
+include_once 'match_ancillary_functions.php';
+
+
+use \team\team as newteam;
+use \match\match as newmatch;
 
 $teams = array();
 
 for($i = 0; $i < 4; $i++)
 {
   $team_id = "team".$i;
-  $teams[] = new team($team_id,$team_details[$i]);
+  $teams[] = new newteam($team_id,$team_details[$i]);
 } 
 
 //d($teams);
@@ -23,10 +28,11 @@ for($j = 0; $j < 6; $j++)
   shuffle($teams);
   $team_1_runs =  $runs[$teams[0]->team_id];
   $team_2_runs =  $runs[$teams[1]->team_id];
-  $matches[] = new match($teams[0], $teams[1], $team_1_runs, $team_2_runs);
+  $matches[] = new newmatch($teams[0], $teams[1], $team_1_runs, $team_2_runs);
 }
 
 $tournament_highest_scorer = 0;
+
 
 for($i = 0; $i < count($matches); $i++)
 {
