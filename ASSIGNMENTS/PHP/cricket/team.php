@@ -1,7 +1,6 @@
 <?php
 
 
-include '../vendor/autoload.php';
 
 
 class team
@@ -15,6 +14,7 @@ class team
         $this->team_id = $id;
         $this->team_players = $players;
     }
+    
 }
 
 

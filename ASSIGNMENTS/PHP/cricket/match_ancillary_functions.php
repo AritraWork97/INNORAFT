@@ -1,64 +1,42 @@
 <?php
 
+    include '../vendor/autoload.php';
+
+    include_once 'tournament.php';
     include_once 'match_data.php';
     include_once 'match.php';
 
-    function get_highest_scorer_in_a_match()
+    function get_highest_team_scorer($runs)
     {
-        global $runs_scored;
-        
-        $i = 1;
-
-        $team_1_highest_scorer = array(
-            "name" => "",
-            "runs" => 0
-        );
-        $team_2_highest_scorer = array(
-            "name" => "",
-            "runs" => 0
-        );
-
-        foreach($runs_scored as $team => $runs)
+        $highest_run = 0;
+        foreach($runs as $index => $run)
         {
-            $highest_player_name = "";
-            $highest_runs = 0;
-            foreach($runs as $player_name => $runs)
+            if($run > $highest_run)
             {
-                if($runs > $highest_runs)
-                {
-                    $highest_runs = $runs;
-                    $highest_player_name = $player_name;
-                }   
+                $highest_run = $run;
             }
-            if($i == 1)
-            {
-                $team_1_highest_scorer['name'] = $highest_player_name;
-                $team_1_highest_scorer['runs'] = $highest_runs;
-            }
-            else if($i == 2)
-            {
-                $team_2_highest_scorer['name'] = $highest_player_name;
-                $team_2_highest_scorer['runs'] = $highest_runs;
-            }
-                
-        
-            $i++;
         }
-        if($team_1_highest_scorer['runs'] > $team_2_highest_scorer['runs'])
+        return $highest_run;
+    }
+
+    function get_highest_scorer_in_a_match($match)
+    {
+        $team_1_highest_score = get_highest_team_scorer($match->match_details['team1_runs']);
+        $team_2_highest_score = get_highest_team_scorer($match->match_details['team2_runs']);
+        if($team_2_highest_score > $team_1_highest_score)
         {
-            return $team_1_highest_scorer;
+            return $team_2_highest_score;
         }
         else 
         {
-            return $team_2_highest_scorer;
+            return $team_1_highest_score;
         }
     }
 
-    function get_team_score($team_details)
+    function get_team_score($runs)
     {
         $total_runs = 0;
-        
-        foreach($team_details as $name => $runs)
+        foreach($runs as $index => $runs)
         {
             $total_runs = $total_runs + $runs;
         }
@@ -66,29 +44,38 @@
         return $total_runs;
     }
 
-    function match_won_by()
+    function match_won_by($match)
     {
-        global $runs_scored;
-        $i = 0;
-        $total_runs = array(
-            "0" => array(
-                'name' => '',
-                'runs' => ''
-            )
-        );
-        
-        foreach($runs_scored as $team => $runs)
-        {
-            $total_runs[$i]['name'] = $team;
-            $total_runs[$i]['runs'] = get_team_score($runs);
-            $i++;
-            
-        }
-        arsort($total_runs[0]);
-        //print_r($total_runs);
-        return (array_slice($total_runs,0,1)[0]);
+        $team_1_score_arr = $match->match_details['team1_runs'];
+        $team_2_score_arr = $match->match_details['team2_runs'];
 
+        //d($match);
+
+        $team_1_total_runs = get_team_score($team_1_score_arr);
+        $team_2_total_runs = get_team_score($team_2_score_arr);
+
+        if($team_1_total_runs > $team_2_total_runs)
+        {
+            return $match->team_a->team_id;
+        }
+        else
+        {
+            return $match->team_b->team_id;
+        }
    }
-    
+
+   function update_win_record($match_won_by, $index)
+   {
+        global $teams;
+        global $matches;
+        for($i = 0; $i < count($teams); $i++)
+        {
+            if($teams[$i]->team_id == $matches[$index]->match_details['match_won_by'])
+            {
+                $teams[$i]->matches_won = $teams[$i]->matches_won + 1;
+                break;
+           }
+        }
+   }
 
 ?>

@@ -11,12 +11,12 @@
         public $team_b = array();
         public $match_details = array();
 
-        function __construct($team_1, $team_2)
+        function __construct($team_1, $team_2, $team1_runs, $team2_runs)
         {
             $this->team_a = $team_1;
             $this->team_b = $team_2;
-            $this->match_details['highest_run_scorer'] = get_highest_scorer_in_a_match();
-            $this->match_details['match_won_by'] = (match_won_by())['name'];
+            $this->match_details['team1_runs'] = $team1_runs;
+            $this->match_details['team2_runs'] = $team2_runs;
         }
         
     }

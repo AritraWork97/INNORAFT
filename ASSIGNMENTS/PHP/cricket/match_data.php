@@ -1,31 +1,26 @@
 <?php
 
+    include '../vendor/autoload.php';
+
+    include_once 'data.php';
+
     function get_random_number()
     {
         return rand(1,100);
 
     }
 
-    $runs_scored = array(
-        "team2" => array(
-            "Aritra" => get_random_number(),
-            "Tanaya" => get_random_number(),
-            "Atrima" => get_random_number(),
-            "Arnab" =>  get_random_number(),
-            "Swaraj" => get_random_number(),
-            "Debadrita" => get_random_number(),
-            "Avirup" => get_random_number(),
-            "Anwesha Sharma Sarkar" => get_random_number() 
-        ),
-        "team1" => array(
-            "Aritra" => get_random_number(),
-            "Tanaya" => get_random_number(),
-            "Atrima" => get_random_number(),
-            "Arnab" => get_random_number(),
-            "Swaraj" => get_random_number(),
-            "Debadrita" => get_random_number(),
-            "Avirup" => get_random_number(),
-            "Anwesha Sharma Sarkar" => get_random_number()
-        ),
-    );
+    $runs = array();
+    $i = 0;
+    foreach($team_details as $index => $team_players)
+    {
+        $team = "team".$index;
+        foreach($team_players as $player_index => $player_details)
+        {
+            //$runs[$team][$i]['name'][] = $player_details['player_name'];
+            $runs[$team][] = get_random_number();
+            $i++;
+        }
+    }
+    //d($runs);
 ?>
