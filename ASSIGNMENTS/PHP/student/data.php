@@ -12,7 +12,7 @@ $student_arr = array(
     "name" => "Atrima Dasgupta",
     "dob" => "1580812682",
     "grade" => "12"
-  )
+  ),
 );
 
 $sub_arr = array(
@@ -38,7 +38,7 @@ $student_marks = array(
   'st2' => array(
     "M" => "81",
     "C" => "71"
-  )
+  ),
 );
 
 ?>

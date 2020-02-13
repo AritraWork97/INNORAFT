@@ -7,9 +7,6 @@ function autoloadstudent() {
   }
 }
 
-
-
 spl_autoload_register('autoloadstudent');
-
 
 ?>

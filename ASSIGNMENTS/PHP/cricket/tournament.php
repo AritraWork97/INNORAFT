@@ -51,10 +51,9 @@ $number_of_wins = 0;
 
 for($i = 0; $i < count($teams); $i++)
 {
-  if($teams[$i]->matches_won > $number_of_wins)
-  {
-  $number_of_wins = $teams[$i]->matches_won;
-  $team_name = $teams[$i]->team_id;
+  if ($teams[$i]->matches_won > $number_of_wins) {
+   $number_of_wins = $teams[$i]->matches_won;
+   $team_name = $teams[$i]->team_id;
   }
 }
 

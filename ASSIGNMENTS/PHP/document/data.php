@@ -20,7 +20,7 @@ $document_data = array(
     "type" => "C",
     "document_college" => "TECHNO",
     "sent" => "1"
-  )
+  ),
 );
 
 $college_data = array(
