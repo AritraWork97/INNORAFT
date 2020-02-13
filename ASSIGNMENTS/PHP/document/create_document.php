@@ -1,5 +1,8 @@
 <?php
 
+
+namespace document;
+
 class document{
     public $name ="";
     public $type ="";

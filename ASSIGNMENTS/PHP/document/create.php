@@ -1,8 +1,10 @@
 <?php
 
 include 'data.php';
-include 'create_document.php';
-include 'create_college.php';
+include 'loader.php';
+
+use \college\college as college;
+use \document\document as document;
 
 $coll_name = 0;
 $k = 0;
