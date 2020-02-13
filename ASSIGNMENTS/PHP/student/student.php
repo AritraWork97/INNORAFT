@@ -1,5 +1,7 @@
 <?php
 
+namespace student;
+
 class student 
 {
     public $id = "";

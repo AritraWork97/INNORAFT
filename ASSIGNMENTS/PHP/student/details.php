@@ -1,9 +1,12 @@
 <?php
 
-include 'student.php';
-include 'subject.php';
+
+include 'loader.php';
+
 include 'data.php';
 include 'ancillary_functions.php';
+
+use \student\student as student;
 
 
 
@@ -55,7 +58,7 @@ echo "<table border='2' class='stats' cellspacing='0'>
                      echo "</tr>"; 
             }
 
-print_r($student_arr_objects);
+//print_r($student_arr_objects);
 
 
 
