@@ -41,7 +41,7 @@ for($i = 0; $i < count($matches); $i++)
   update_win_record($matches[$i]->match_details['match_won_by'], $i);
   if($tournament_highest_scorer < $matches[$i]->match_details['highest_scorer'])
   {
-    $tournament_highest_scorer = $matches[$i]->match_details['highest_scorer'];
+  $tournament_highest_scorer = $matches[$i]->match_details['highest_scorer'];
   }
 
 }
@@ -53,8 +53,8 @@ for($i = 0; $i < count($teams); $i++)
 {
   if($teams[$i]->matches_won > $number_of_wins)
   {
-    $number_of_wins = $teams[$i]->matches_won;
-    $team_name = $teams[$i]->team_id;
+  $number_of_wins = $teams[$i]->matches_won;
+  $team_name = $teams[$i]->team_id;
   }
 }
 
