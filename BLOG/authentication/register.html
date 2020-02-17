@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Registration Table</title>
+</head>
+<body>
+    <form method="POST" action="register_user.php">
+        <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
+            <caption>Registration form</caption>
+            <tr>
+                <th>Enter your first name</th>
+                <td><input type="text" name="firstname" id="firstname" maxlength="10" title="enter your first name" placeholder="enter your first name" required/></td>
+            </tr>
+            <tr>
+                <th>Enter your last name</th>
+                <td><input type="text" name="lastname" id="lastname"/></td>
+            </tr>
+            <tr>
+                <th>Enter your password</th>
+                <td><input type="password" name="password" id="password"/></td>
+            </tr>
+            <tr>
+                <th>ReEnter your password</th>
+                <td><input type="password" name="reenter_password" id="reenter_password"/></td>
+            </tr>
+            <tr>
+                <th>Enter your email</th>
+                <td><input type="email" name="email" id="email"/></td>
+            </tr>
+            <tr>
+                <th>Enter your mobile</th>
+                <td><input type="number" name="mobile_number" id="mobile_number"/></td>
+            </tr>
+            <tr>
+                <th>Enter your address</th>
+                <td><textarea rows="8" cols="20" name="address" id="address"></textarea></td>
+            </tr>
+            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
+                <input type="reset" value="Reset Data"/>
+            </td>
+            </tr>
+            </table>
+    </form>
+</body>
+</html>
