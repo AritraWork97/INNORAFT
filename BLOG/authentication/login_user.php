@@ -7,22 +7,21 @@ $check_password = "";
 session_start();
 
 if(isset($_POST['Submit'])){
-    $email = test_input($_POST['email']);
+    $email = 'banerjeeamit778@gmail.com';//test_input($_POST['email']);
     $password = test_input($_POST['Password']);
 
     //print_r($email);
 
-    $sql_user_details = "SELECT user.userid, user.user_pass FROM user where user.user_email = '$email'";
+    $sql_user_details = "SELECT user.userid, user.user_pass, user.user_first_name, user.user_last_name FROM user where user.user_email = '$email'";
     $result = $conn->query($sql_user_details);
     if($result){
         if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
                     $id = $row['userid'];
                     $check_password = $row['user_pass'];
+                    $name = $row['user_first_name'].' '.$row['user_last_name'];
                 }
                 mysqli_free_result($result);
-                print_r($id);
-                print_r($check_password);
             } 
         } else {
         echo "ERROR: Could not able to execute";
@@ -37,9 +36,10 @@ if(isset($_POST['Submit'])){
 
         /* Success: Set session variables and redirect to protected page */
         $_SESSION['userid'] = $id;
+        $_SESSION['username'] = $name;
 
         $_SESSION['Active'] = true;
-        header("location:../index.php");
+        header("location:../blog/index.php");
         exit;
 
     } else {

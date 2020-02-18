@@ -1,18 +1,11 @@
 <?php
 
 require_once '../../../../.cred/db_auth.php';
+require_once '../validation.php';
 
 $firstname = $lastname = $password = $check_password = $mobile = $address = $email = "";
 
 $hashed_password = "";
-
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
- }
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["firstname"])) {
