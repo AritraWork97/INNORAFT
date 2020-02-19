@@ -44,20 +44,16 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.blog_post_id, blog_post.
                        echo "<div class='card-body' style='border: 1px solid coral'>";
                         echo "<h5 class='card-title'>$title</h5>";
                         echo "<p class='card-text'>$data</p>";
+                    echo "<form action='' method='POST'>";
+                        echo "<input type='submit' name='action' value='Display'/>";
+                        echo "<input type='hidden' name='data' value='$data'/>";
+                    echo "</form>";
                        echo  "</div>";
                      echo  "</div>";
                      if($_SERVER["REQUEST_METHOD"] == "POST") {
-                         if($_POST['action'] == 'Delete') {
-                            $id = $_POST['id'];
-                            $sql_del = "DELETE FROM blog_post WHERE  blog_post.blog_post_id='$id' AND blog_post.userid = '$user_id'";
-                            $result1 = $conn->query($sql_del);
-                            if($result1) {
-                                header("location:index.php");
-                            }
-                        } else if($_POST['action'] == 'Edit') {
-                            $id = $_POST['id'];
-                            header("location:update_data.php?location=".$id);
-                        }
+                          if($_POST['action'] == 'Display') {
+                            header("location:show_blog.php?data=".$data);
+                        } 
                         
     
                 }

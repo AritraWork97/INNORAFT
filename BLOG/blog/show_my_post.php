@@ -36,16 +36,19 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, 
                 while($row = mysqli_fetch_array($result)){
                     $title = $row['blog_title'];
                     $data = $row['blog_data'];
+                    $sneak_peek = substr($data,0,5);
                     $blog_id = $row['blog_post_id'];
                     $user_id = $row['userid'];
                     print_r($user_id);
                      echo "<div class='card blog-content'>";
                        echo "<div class='card-body' style='border: 1px solid coral'>";
                         echo "<h5 class='card-title'>$title</h5>";
-                        echo "<p class='card-text'>$data</p>";
+                        echo "<p class='card-text'>$sneak_peek</p>";
                         echo "<form action='' method='POST'>";
                             echo "<input type='submit' name='action' value='Edit'/>";
                             echo "<input type='submit' name='action' value='Delete'/>";
+                            echo "<input type='submit' name='action' value='Display'/>";
+                            echo "<input type='hidden' name='data' value='$data'/>";
                             echo "<input type='hidden' name='id' value='$blog_id'/>";
                         echo "</form>";
                        echo  "</div>";
@@ -62,7 +65,9 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, 
                         } else if($_POST['action'] == 'Edit') {
                             $id = $_POST['id'];
                             header("location:update_data.php?location=".$id);
-                        }
+                        }  else if($_POST['action'] == 'Display') {
+                            header("location:show_blog.php?data=".$data);
+                        } 
                         
     
                 }
