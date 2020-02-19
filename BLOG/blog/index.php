@@ -44,11 +44,6 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.blog_post_id, blog_post.
                        echo "<div class='card-body' style='border: 1px solid coral'>";
                         echo "<h5 class='card-title'>$title</h5>";
                         echo "<p class='card-text'>$data</p>";
-                        echo "<form action='' method='POST'>";
-                            echo "<input type='submit' name='action' value='Edit'/>";
-                            echo "<input type='submit' name='action' value='Delete'/>";
-                            echo "<input type='hidden' name='id' value='$blog_id'/>";
-                        echo "</form>";
                        echo  "</div>";
                      echo  "</div>";
                      if($_SERVER["REQUEST_METHOD"] == "POST") {

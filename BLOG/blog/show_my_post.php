@@ -37,25 +37,35 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, 
                     $title = $row['blog_title'];
                     $data = $row['blog_data'];
                     $blog_id = $row['blog_post_id'];
+                    $user_id = $row['userid'];
+                    print_r($user_id);
                      echo "<div class='card blog-content'>";
                        echo "<div class='card-body' style='border: 1px solid coral'>";
                         echo "<h5 class='card-title'>$title</h5>";
                         echo "<p class='card-text'>$data</p>";
-                        echo "<form action='' method='post'>";
-                            echo "<a href='#' class='btn btn-primary btn-edit'>Edit</a>";
-                            echo "<a href='#' class='btn btn-primary btn-del'>Delete</a>";
+                        echo "<form action='' method='POST'>";
+                            echo "<input type='submit' name='action' value='Edit'/>";
+                            echo "<input type='submit' name='action' value='Delete'/>";
+                            echo "<input type='hidden' name='id' value='$blog_id'/>";
                         echo "</form>";
                        echo  "</div>";
                      echo  "</div>";
-
-                     if(isset($_POST['btn-del'])) {
-                         $sql_del = "DELETE FROM blog_post WHERE  blog_post.blog_post_id='$blog_id'";
-                         $result1 = $conn->query($sql_del);
-                         if($result1) {
-                             header("location:index.php");
-                         }
-
-                     }
+                     if($_SERVER["REQUEST_METHOD"] == "POST") {
+                         if($_POST['action'] == 'Delete') {
+                            $id = $_POST['id'];
+                            print_r($id);
+                            $sql_del = "delete from blog_post where blog_post.blog_post_id='$id' and blog_post.userid = '$userid'";
+                            $result1 = $conn->query($sql_del);
+                            if($result1) {
+                                header("location:index.php");
+                            }
+                        } else if($_POST['action'] == 'Edit') {
+                            $id = $_POST['id'];
+                            header("location:update_data.php?location=".$id);
+                        }
+                        
+    
+                }
 
 
                 }
