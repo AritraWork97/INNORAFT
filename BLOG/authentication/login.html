@@ -9,12 +9,19 @@
 <body>
 <div class="container">
     <form action="login_user.php" method="POST" name="Login_Form">
-        <h2>Please sign in</h2>
-        <label for="email">Username</label>
-        <input name="email" type="username" id="email" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="Password" type="password" id="inputPassword" placeholder="Password" required>
-        <button name="Submit" value="Login" type="submit">Sign in</button>
+        <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
+            <caption>Login form</caption>
+            <tr>
+                <th>Enter your Email ID</th>
+                <td><input name="email" type="username" id="email" placeholder="Username" required autofocus></td>
+            </tr>
+            <tr>
+                <th>Enter your Password</th>
+                <td><input name="Password" type="password" id="inputPassword" placeholder="Password" required></td>
+            </tr>
+            <td colspan="2" align="center">
+                <button name="Submit" value="Login" type="submit">Sign in</button>
+            </td>
     </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
