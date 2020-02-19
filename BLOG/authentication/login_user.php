@@ -7,7 +7,7 @@ $check_password = "";
 session_start();
 
 if(isset($_POST['Submit'])){
-    $email = 'banerjeeamit778@gmail.com';//test_input($_POST['email']);
+    $email = test_input($_POST['email']);
     $password = test_input($_POST['Password']);
 
     //print_r($email);
