@@ -31,38 +31,50 @@ require_once '../../../../.cred/db_auth.php';
 
 session_start();
 
+ /* Starts the session */
+      if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
+         header("location:../authentication/login.html");
+         exit;
+        }
+
 $sql_blog_details = "SELECT blog_post.userid, blog_post.blog_post_id, blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post";
     $result = $conn->query($sql_blog_details);
-    if($result){
+    echo "<div class='container'>";
+    echo "<section class='cards-wrapper'>";
+    echo "<div class='card-grid-space'>";
+    if($result){     
         if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
                     $title = $row['blog_title'];
                     $data = $row['blog_data'];
+                    $sneak_peek = substr($data, 0, 6);
                     $blog_id = $row['blog_post_id'];
                     $user_id = $row['userid'];
-                     echo "<div class='card blog-content'>";
-                       echo "<div class='card-body' style='border: 1px solid coral'>";
-                        echo "<h5 class='card-title'>$title</h5>";
-                        echo "<p class='card-text'>$data</p>";
-                    echo "<form action='' method='POST'>";
-                        echo "<input type='submit' name='action' value='Display'/>";
-                        echo "<input type='hidden' name='data' value='$data'/>";
-                    echo "</form>";
-                       echo  "</div>";
-                     echo  "</div>";
-                     if($_SERVER["REQUEST_METHOD"] == "POST") {
-                          if($_POST['action'] == 'Display') {
-                            header("location:show_blog.php?data=".$data);
-                        } 
-                        
-    
-                }
+                       echo "<a class='card cont'>";
+                            echo "<h1>$title</h1>";
+                            echo "<p>$sneak_peek</p>";
+                            echo "<form action='' method='POST'>";
+                            echo "<input type='submit' name='action' value='Display'/>";
+                            echo "<input type='hidden' name='data' value='$blog_id'/>";
+                        echo "</form>";
+                       echo  "</a>";
                }
-                mysqli_free_result($result);
-            } 
+               mysqli_free_result($result);
+            }    
         } else {
         echo $conn->error;
         }
+        echo  "</div>";
+        echo "</section>";
+        echo "</div>";
+            
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            if($_POST['action'] == 'Display') {
+              header("location:show_blog.php?data=".$_POST['data']);
+          } 
+          
+
+  }
 
 
 ?>

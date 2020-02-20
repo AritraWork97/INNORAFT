@@ -7,6 +7,12 @@ include_once 'blog.php';
 
 session_start();
 
+if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
+    header("location:../../authentication/login.html");
+    exit;
+   }
+
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $blog_title = test_input($_POST['title']);

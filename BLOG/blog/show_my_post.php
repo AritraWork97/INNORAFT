@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style_2.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </head>
@@ -26,6 +26,11 @@
 require_once '../../../../.cred/db_auth.php';
 
 session_start();
+if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
+    header("location:../authentication/login.html");
+    exit;
+   }
+
 
 $userid = $_SESSION['userid'];
 
@@ -53,25 +58,6 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, 
                         echo "</form>";
                        echo  "</div>";
                      echo  "</div>";
-                     if($_SERVER["REQUEST_METHOD"] == "POST") {
-                         if($_POST['action'] == 'Delete') {
-                            $id = $_POST['id'];
-                            print_r($id);
-                            $sql_del = "delete from blog_post where blog_post.blog_post_id='$id' and blog_post.userid = '$userid'";
-                            $result1 = $conn->query($sql_del);
-                            if($result1) {
-                                header("location:index.php");
-                            }
-                        } else if($_POST['action'] == 'Edit') {
-                            $id = $_POST['id'];
-                            header("location:update_data.php?location=".$id);
-                        }  else if($_POST['action'] == 'Display') {
-                            header("location:show_blog.php?data=".$data);
-                        } 
-                        
-    
-                }
-
 
                 }
                 mysqli_free_result($result);
@@ -81,6 +67,25 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, 
         } else {
         echo $conn->error;
         }
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            if($_POST['action'] == 'Delete') {
+               $id = $_POST['id'];
+               print_r($id);
+               $sql_del = "delete from blog_post where blog_post.blog_post_id='$id' and blog_post.userid = '$userid'";
+               $result1 = $conn->query($sql_del);
+               if($result1) {
+                   header("location:index.php");
+               }
+           } else if($_POST['action'] == 'Edit') {
+               $id = $_POST['id'];
+               header("location:update_data.php?location=".$id);
+           }  else if($_POST['action'] == 'Display') {
+               header("location:show_blog.php?data=".$_POST['data']);
+           } 
+           
+
+   }
+
 
 
 ?>

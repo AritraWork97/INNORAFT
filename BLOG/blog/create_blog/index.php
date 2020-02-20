@@ -1,3 +1,14 @@
+<?php
+
+if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
+    header("location:../../authentication/login.html");
+    exit;
+   }
+
+
+?>
+
+
 <html>
 <head>
 </head>

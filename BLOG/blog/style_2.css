@@ -1,0 +1,29 @@
+.main-div {
+    width: 100%;
+    background-color: coral;
+}
+
+.blog-content {
+    display: inline-flex;
+    margin-right: 15px;
+    width: 150px;
+}
+
+.blog-content .btn {
+    margin-right: 5px;;
+}
+
+.nav-item {
+    list-style: none;
+    margin-right: 25px;;
+}
+
+.show-post {
+    margin-right: 25px;
+    float: right;
+    width: fit-content;
+}
+
+.show-post a {
+    color: white;
+}
