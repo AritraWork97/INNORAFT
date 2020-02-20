@@ -34,7 +34,7 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
 
 $userid = $_SESSION['userid'];
 
-$sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post where blog_post.userid = '$userid'";
+$sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.img_path,blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post where blog_post.userid = '$userid'";
     $result = $conn->query($sql_blog_details);
     if($result){
         if(mysqli_num_rows($result) > 0){
@@ -44,9 +44,10 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.blog_post_author, 
                     $sneak_peek = substr($data,0,5);
                     $blog_id = $row['blog_post_id'];
                     $user_id = $row['userid'];
-                    print_r($user_id);
+                    $target_path = $row['img_path'];
                      echo "<div class='card blog-content'>";
                        echo "<div class='card-body' style='border: 1px solid coral'>";
+                       echo ("<img src='$target_path' width='100px' height='100px'>");
                         echo "<h5 class='card-title'>$title</h5>";
                         echo "<p class='card-text'>$sneak_peek</p>";
                         echo "<form action='' method='POST'>";

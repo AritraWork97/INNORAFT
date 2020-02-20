@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
     header("location:../../authentication/login.html");
     exit;
@@ -13,7 +15,7 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
 <head>
 </head>
 <body>
-    <form method="POST" action="create_post.php">
+    <form method="POST" action="create_post.php" enctype="multipart/form-data">
         <table border="1" align="center" bgcolor="#CCCCCC" >
             <caption>Create Blog</caption>
             <tr>
@@ -23,6 +25,12 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
             <tr>
                 <th>Enter Blog Content</th>
                 <td><textarea rows="20" cols="20" name="content" id="content"></textarea></td>
+            </tr>
+            <tr>  
+               <td>Upload Image : </td>
+               <td>
+               <input required type="file" name="image">
+               </td>
             </tr>
             <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
                 <input type="reset" value="Reset Data"/>

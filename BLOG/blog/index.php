@@ -19,7 +19,7 @@
     </div>
     <div>
     <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
-         <button type="button" class="btn btn-primary show-post"><a href="create_blog/index.html">Add More Post</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="create_blog/index.php">Add More Post</a></button>
     </div>
   </body>
 </html>
@@ -37,7 +37,7 @@ session_start();
          exit;
         }
 
-$sql_blog_details = "SELECT blog_post.userid, blog_post.blog_post_id, blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post";
+$sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_post_id, blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post";
     $result = $conn->query($sql_blog_details);
     echo "<div class='container'>";
     echo "<section class='cards-wrapper'>";
@@ -50,7 +50,9 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.blog_post_id, blog_post.
                     $sneak_peek = substr($data, 0, 6);
                     $blog_id = $row['blog_post_id'];
                     $user_id = $row['userid'];
+                    $target_path = $row['img_path'];
                        echo "<a class='card cont'>";
+                       echo ("<img src='$target_path' width='100px' height='100px'>");
                             echo "<h1>$title</h1>";
                             echo "<p>$sneak_peek</p>";
                             echo "<form action='' method='POST'>";

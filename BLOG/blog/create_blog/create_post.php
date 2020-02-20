@@ -12,6 +12,7 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
     exit;
    }
 
+   $target_path = "";
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -21,13 +22,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $userid = $_SESSION['userid'];
     $author_name = $_SESSION['username'];
     $blog_post_id = time();
-}
+    if(isset($_FILES['image'])){
+        $errors= array();
+        $file_name = $_FILES['image']['name'];
+        $file_size =$_FILES['image']['size'];
+        $file_tmp =$_FILES['image']['tmp_name'];
+        $file_type=$_FILES['image']['type'];
+        $tmp = explode('.',$file_name);
+        $file_ext=strtolower(end($tmp));
+        
+        $extensions= array("jpeg","jpg","png");
+        
+        if(in_array($file_ext,$extensions)=== false){
+           $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+        }
+        
+        if($file_size > 2097152){
+           $errors[]='File size must be excately 2 MB';
+        }
+        $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
+        $target_path = 'uploads/'. basename($new_file_name);
+        $new_target_path = 'create_blog/uploads/'. basename($new_file_name);
+        
+        if(empty($errors)==true){
+            echo "vbb";
+           move_uploaded_file($file_tmp,$target_path);
+        }else{
+           print_r($errors);
+        }
+     }
 
+}
+ 
     $new_post = new post($author_name, $blog_title, $blog_content, $current_time);
 
+    print_r($userid);
 
     $sql_insert_blog_post = "insert into blog_post values('$userid','$blog_post_id','$author_name',
-                                                          '$blog_title', '$current_time', '$blog_content')";
+                                                          '$blog_title', '$current_time', '$blog_content', '$new_target_path')";
             if($conn->query($sql_insert_blog_post) == true){
                 header("location:../index.php");
             } else {
