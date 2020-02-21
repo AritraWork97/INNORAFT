@@ -1,42 +1,10 @@
-<html>
-<head>
-</head>
-<body>
-    <form method="POST" action="">
-        <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
-            <caption>Create Blog</caption>
-            <tr>
-                <th>Enter New Blog Title</th>
-                <td><input type="text" name="title" id="title" maxlength="100" required/></td>
-            </tr>
-            <tr>
-                <th>Enter New Blog Content</th>
-                <td><textarea rows="20" cols="20" name="content" id="content"></textarea></td>
-            </tr>
-            <tr>  
-               <td>Upload Image : </td>
-               <td>
-               <input required type="file" name="image">
-               </td>
-            </tr>
-            <input type="hidden" name = 'id' value=''/>
-            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
-                <input type="reset" value="Reset Data"/>
-            </td>
-            </tr>
-        </table>
-    </form>
-</body>
-</html>
-
-
 <?php
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
     header("location:../authentication/login.html");
     exit;
-   }
+}
 
 
 include_once '../validation.php';
@@ -44,6 +12,24 @@ include_once '../../../../.cred/db_auth.php';
 
 $id = $_GET["location"];
 $userid = $_SESSION['userid'];
+$title = "";
+$content = "";
+
+$sql_blog_details = "SELECT blog_post.blog_title, blog_post.img_path, blog_post.blog_data FROM blog_post where blog_post.blog_post_id = '$id'";
+    $result = $conn->query($sql_blog_details);
+    if($result){
+        if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    $title = $row['blog_title'];
+                    $content = $row['blog_data'];
+                    $prev_image_path = $row['img_path'];
+                    //print_r($prev_image_path);
+                }
+                mysqli_free_result($result);
+            } else {
+                echo "You have not made any posts";
+    }
+}
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $blog_title = test_input($_POST['title']);
@@ -72,13 +58,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_target_path = 'create_blog/uploads/'. basename($new_file_name);
         
         if(empty($errors)==true){
-            echo "vbb";
-           move_uploaded_file($file_tmp,$target_path);
-        }else{
-           print_r($errors);
+           move_uploaded_file($file_tmp,$new_target_path);
+        }else{ 
+           //print_r($errors);
+           $new_target_path = $prev_image_path;
         }
-     }
-
+    } 
 }
 
 
@@ -86,12 +71,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             where blog_post_id = '$id' AND userid = '$userid'";
                             $result1 = $conn->query($sql_del);
                             if($result1 == true) {
-                                echo "asdsa";
                                 header("location:index.php");
-                            } else {
-                                echo "huuu";
-                            }
+                            } 
 
     
 
 ?>
+
+<html>
+<head>
+</head>
+<body>
+    <form method="POST" action="" enctype="multipart/form-data">
+        <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
+            <caption>Edit Blog</caption>
+            <tr>
+                <th>Enter New Blog Title</th>
+                <td><input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/></td>
+            </tr>
+            <tr>
+                <th>Enter New Blog Content</th>
+                <td><textarea rows="20" cols="20" name="content" id="content"><?php echo $content?></textarea></td>
+            </tr>
+            <tr>  
+               <td>Upload Image : </td>
+               <td>
+               <input type="file" name="image" value="<?php echo $new_target_path ?>">
+               </td>
+            </tr>
+            <input type="hidden" name = 'id' value=''/>
+            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
+            </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

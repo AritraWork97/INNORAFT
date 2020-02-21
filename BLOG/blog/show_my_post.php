@@ -52,7 +52,7 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.img_path,blog_post
                         echo "<p class='card-text'>$sneak_peek</p>";
                         echo "<form action='' method='POST'>";
                             echo "<input type='submit' name='action' value='Edit'/>";
-                            echo "<input type='submit' name='action' value='Delete'/>";
+                            echo "<input type='submit' name='action' value='Delete'>";
                             echo "<input type='submit' name='action' value='Display'/>";
                             echo "<input type='hidden' name='data' value='$data'/>";
                             echo "<input type='hidden' name='id' value='$blog_id'/>";
@@ -70,18 +70,19 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.img_path,blog_post
         }
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if($_POST['action'] == 'Delete') {
-               $id = $_POST['id'];
-               print_r($id);
-               $sql_del = "delete from blog_post where blog_post.blog_post_id='$id' and blog_post.userid = '$userid'";
-               $result1 = $conn->query($sql_del);
-               if($result1) {
-                   header("location:index.php");
-               }
+               $loc = 'delete_my_post.php?id='.$blog_id;
+                echo "<script>";
+                echo " if(confirm('Are You sure?'))
+                        {
+                            window.location.href = '$loc';
+                        }
+                        </script>";
+               
            } else if($_POST['action'] == 'Edit') {
                $id = $_POST['id'];
                header("location:update_data.php?location=".$id);
            }  else if($_POST['action'] == 'Display') {
-               header("location:show_blog.php?data=".$_POST['data']);
+               header("location:show_blog.php?data=".$_POST['id']);
            } 
            
 

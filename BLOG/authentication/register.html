@@ -3,37 +3,43 @@
 <title>Registration Table</title>
 </head>
 <body>
-    <form method="POST" action="register_user.php">
+    <form method="POST" action="register_user.php" enctype="multipart/form-data">
         <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
             <caption>Registration form</caption>
             <tr>
                 <th>Enter your first name</th>
-                <td><input type="text" name="firstname" id="firstname" maxlength="10" title="enter your first name" placeholder="enter your first name" required/></td>
+                <td><input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name" required/></td>
             </tr>
             <tr>
                 <th>Enter your last name</th>
-                <td><input type="text" name="lastname" id="lastname"/></td>
+                <td><input type="text" name="lastname" id="lastname" required/></td>
             </tr>
             <tr>
                 <th>Enter your password</th>
-                <td><input type="password" name="password" id="password"/></td>
+                <td><input type="password" name="password" id="password" required/></td>
             </tr>
             <tr>
                 <th>ReEnter your password</th>
-                <td><input type="password" name="reenter_password" id="reenter_password"/></td>
+                <td><input type="password" name="reenter_password" id="reenter_password" required/></td>
             </tr>
             <tr>
                 <th>Enter your email</th>
-                <td><input type="email" name="email" id="email"/></td>
+                <td><input type="email" name="email" id="email" required/></td>
             </tr>
             <tr>
                 <th>Enter your mobile</th>
-                <td><input type="number" name="mobile_number" id="mobile_number"/></td>
+                <td><input type="number" name="mobile_number" id="mobile_number" required/></td>
             </tr>
             <tr>
                 <th>Enter your address</th>
-                <td><textarea rows="8" cols="20" name="address" id="address"></textarea></td>
+                <td><textarea rows="8" cols="20" name="address" id="address" required></textarea></td>
             </tr>
+            <tr>  
+                <td>Upload Image : </td>
+                <td>
+                <input required type="file" name="image" required>
+                </td>
+             </tr>
             <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
                 <input type="reset" value="Reset Data"/>
             </td>

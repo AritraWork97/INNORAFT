@@ -1,3 +1,42 @@
+<?php
+
+require_once '../../../../.cred/db_auth.php';
+
+session_start();
+
+ /* Starts the session */
+      if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
+         
+        }
+    $userid = $_SESSION['userid'];
+    $fullname = "";
+
+
+      $sql_user_queery = "select user.user_first_name, user.user_last_name, user.img_path from user where user.userid = '$userid'";
+      $result_user = $conn->query($sql_user_queery);
+      if($result_user){     
+        if(mysqli_num_rows($result_user) > 0){
+                while($row = mysqli_fetch_array($result_user)){
+                    $firstname = $row['user_first_name'];
+                    $lastname = $row['user_last_name'];
+                    $img_path = $row['img_path'];
+                    $fullname = $firstname.' '.$lastname;
+                }
+            }
+        }
+
+
+        
+
+
+?>
+
+
+
+
+
+
+
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
@@ -9,9 +48,16 @@
     <div class="main-div">
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="user">
+        <?php if(isset($_SESSION['Active']) == true): ?>
+            <img src="<?php echo $img_path ?>">
+            <h5><?php echo $fullname ?></h5>
+            <a class="nav-link" href="../authentication/logout.php">Log out <span class="sr-only">(current)</span></a>
+        <?php endif; ?>
+      </div>
          <ul class="navbar-nav" style="float: right; margin-top : 12px;">
             <li class="nav-item active">
-                <a class="nav-link" href="../authentication/logout.php">Log out <span class="sr-only">(current)</span></a>
+                
             </li>
         </ul>
       </div>
@@ -24,18 +70,7 @@
   </body>
 </html>
 
-
 <?php
-
-require_once '../../../../.cred/db_auth.php';
-
-session_start();
-
- /* Starts the session */
-      if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-         header("location:../authentication/login.html");
-         exit;
-        }
 
 $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_post_id, blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post";
     $result = $conn->query($sql_blog_details);
@@ -79,5 +114,6 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
   }
 
 
-?>
 
+
+?>

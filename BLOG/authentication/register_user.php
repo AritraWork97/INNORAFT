@@ -3,6 +3,8 @@
 require_once '../../../../.cred/db_auth.php';
 require_once '../validation.php';
 
+session_start();
+
 $firstname = $lastname = $password = $check_password = $mobile = $address = $email = "";
 
 $hashed_password = "";
@@ -53,6 +55,34 @@ $hashed_password = "";
      {
         $check_password = test_input($_POST["reenter_password"]);
      }
+     if(isset($_FILES['image'])){
+      $errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      $tmp = explode('.',$file_name);
+      $file_ext=strtolower(end($tmp));
+      
+      $extensions= array("jpeg","jpg","png");
+      
+      if(in_array($file_ext,$extensions)=== false){
+         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+      }
+      
+      if($file_size > 2097152){
+         $errors[]='File size must be excately 2 MB';
+      }
+      $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
+      $target_path = 'uploads/'. basename($new_file_name);
+      $new_target_path = '../authentication/uploads/'. basename($new_file_name);
+      
+      if(empty($errors)==true){
+         move_uploaded_file($file_tmp,$target_path);
+      }else{
+         print_r($errors);
+      }
+   }
  }
 
  if($password === $check_password) {
@@ -60,11 +90,16 @@ $hashed_password = "";
  }
 
  $userid = md5($mobile);
+ $name = $firstname.' '.$lastname;
 
- $sql_insert_user_table = "insert into user values('$userid','$firstname','$lastname', '$hashed_password', '$address', '$mobile', '$email')";
+ $sql_insert_user_table = "insert into user values('$userid','$firstname','$lastname', '$hashed_password', '$address', '$mobile', '$email', '$new_target_path')";
         if($conn->query($sql_insert_user_table) == true){
-            echo "new record added sucessfully into code table";
-            echo "<br>";
+         $_SESSION['userid'] = $userid;
+         $_SESSION['username'] = $name;
+ 
+         $_SESSION['Active'] = true;
+         header("location:../blog/index.php");
+         exit;
         } else {
            echo $conn->error;
            echo "<br>";
