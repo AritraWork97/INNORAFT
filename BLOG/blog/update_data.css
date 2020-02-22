@@ -1,0 +1,10 @@
+input[type='file'] {
+    width: 90px;
+    height:25px;
+    color: transparent;
+}
+
+.input-class {
+    float: right;
+    margin-right: 71px;
+}

@@ -43,7 +43,6 @@ $sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.img_path,blog_post
                     $data = $row['blog_data'];
                     $sneak_peek = substr($data,0,5);
                     $blog_id = $row['blog_post_id'];
-                    $user_id = $row['userid'];
                     $target_path = $row['img_path'];
                      echo "<div class='card blog-content'>";
                        echo "<div class='card-body' style='border: 1px solid coral'>";

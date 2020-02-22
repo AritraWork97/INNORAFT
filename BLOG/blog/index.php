@@ -4,15 +4,21 @@ require_once '../../../../.cred/db_auth.php';
 
 session_start();
 
+$css_class = "";
+
  /* Starts the session */
       if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-         
+         $css_class = 'main-div';
+        } else {
+          $userid = $_SESSION['userid'];
+          $css_class = 'main-div-2';
         }
-    $userid = $_SESSION['userid'];
+
+   
     $fullname = "";
 
 
-      $sql_user_queery = "select user.user_first_name, user.user_last_name, user.img_path from user where user.userid = '$userid'";
+      $sql_user_queery = "select user.user_first_name, user.user_last_name, user.img_path from user";
       $result_user = $conn->query($sql_user_queery);
       if($result_user){     
         if(mysqli_num_rows($result_user) > 0){
@@ -45,7 +51,7 @@ session_start();
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
-    <div class="main-div">
+    <div class="<?php echo $css_class ?>">
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarNav">
       <div class="user">

@@ -4,10 +4,6 @@ require_once '../../../../.cred/db_auth.php';
 
 session_start();
 
-if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../authentication/login.html");
-    exit;
-   }
 
 $blog_id = $_GET['data'];
 

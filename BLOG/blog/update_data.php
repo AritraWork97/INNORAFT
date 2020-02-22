@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -14,6 +15,11 @@ $id = $_GET["location"];
 $userid = $_SESSION['userid'];
 $title = "";
 $content = "";
+$blog_title = "";
+$blog_content = "";
+$new_target_path = "";
+$current_time = "";
+
 
 $sql_blog_details = "SELECT blog_post.blog_title, blog_post.img_path, blog_post.blog_data FROM blog_post where blog_post.blog_post_id = '$id'";
     $result = $conn->query($sql_blog_details);
@@ -63,25 +69,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
            //print_r($errors);
            $new_target_path = $prev_image_path;
         }
-    } 
-}
-
-
+    }
     $sql_del = "update blog_post set  blog_title='$blog_title', img_path='$new_target_path' ,blog_data = '$blog_content', blog_date = '$current_time'
             where blog_post_id = '$id' AND userid = '$userid'";
                             $result1 = $conn->query($sql_del);
                             if($result1 == true) {
                                 header("location:index.php");
                             } 
-
-    
-
+ 
+}
 ?>
 
 <html>
 <head>
 </head>
 <body>
+    <link rel="stylesheet" href="update_data.css"></link>
+    <script src="update_data.js"></script>
     <form method="POST" action="" enctype="multipart/form-data">
         <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
             <caption>Edit Blog</caption>
@@ -96,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <tr>  
                <td>Upload Image : </td>
                <td>
-               <input type="file" name="image" value="<?php echo $new_target_path ?>">
+               <input type="file" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
                </td>
             </tr>
             <input type="hidden" name = 'id' value=''/>
@@ -107,3 +111,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
+
+
+

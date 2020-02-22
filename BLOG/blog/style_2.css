@@ -1,6 +1,13 @@
 .main-div {
     width: 100%;
+    height: 83px;
     background-color: coral;
+    margin-top: -39px;
+}
+
+.main-div-2 {
+  width: 100%;
+  background-color: coral;
 }
 
 .blog-content {
