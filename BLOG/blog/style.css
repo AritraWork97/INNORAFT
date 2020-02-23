@@ -19,7 +19,7 @@
 
 .user h5 {
   position: absolute;
-  right: 124px;
+  right: 253px;
   margin-top: 15px;
 }
 
@@ -52,7 +52,6 @@
 }
 
 
-
 * {
   box-sizing: border-box;
 }
@@ -64,10 +63,18 @@
 }
 
 .cont input {
-    margin-left: 64px;
-    margin-bottom: -24px;
-    height: 30px;
+  height: 30px;
+  color: black;
     width: 87px;
+    position: absolute;
+    right: 25px;
+    bottom: 21px;
+}
+
+.user a{
+  float: right;
+    margin-top: 15px;
+    margin-right: 34px;
 }
 
 body {
@@ -83,8 +90,14 @@ body {
   margin-right: 25px;
 }
 
+.cont img {
+  margin-bottom: 14px;
+}
+
+
 a:hover {
     text-decoration: none;
+    color: white;
 }
 
 .cards-wrapper {
@@ -103,8 +116,8 @@ a:hover {
   font-size: 1.5em;
   color: white;
   border-radius: 1em;
-  padding: 1em;
-  /*margin: 2em;*/
+  padding-left: 1em;
+  padding-bottom: 2em;
   display: flex;
   align-items: flex-end;
   background-size: cover;
@@ -119,16 +132,18 @@ a:hover {
 
 .card h1 {
   margin-bottom: 42px;
-  font-size: 15px;
+  margin-left: 25px;
+    font-size: 15px;
+    margin-left: 25;
 }
 
 
 
 .card p {
   position: absolute;
-  font-size: 0.75em;
+  font-size: 15px;
   font-family: 'Open Sans';
-  margin-top: 0.5em;
+  margin-top: 1.5em;
   line-height: 2em;
 }
 
@@ -172,10 +187,6 @@ a:hover {
   height: 12%;
 }
 
-
-.card:hover {
-  color: var(--color);
-}
 
 .card:hover:before, .card:hover:after {
   transform: scale(1);

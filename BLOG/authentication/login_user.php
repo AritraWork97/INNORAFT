@@ -43,12 +43,12 @@ if(isset($_POST['Submit'])){
         exit;
 
     } else {
-        ?>
-        &nbsp;
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Warning!</strong> Incorrect information.
-        </div>
-        <?php
+        $loc = 'login.html';
+        echo "<script>";
+        echo " if(confirm('Invalid credentials, you are being redirected back to the login page'))
+                {
+                    window.location.href = '$loc';
+                }
+                </script>";
     }
 }
