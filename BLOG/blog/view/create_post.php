@@ -1,13 +1,5 @@
 <?php
-
-session_start();
-
-if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../../authentication/login.html");
-    exit;
-   }
-
-
+require '../controller/create_post_controller.php';
 ?>
 
 
@@ -15,7 +7,7 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
 <head>
 </head>
 <body>
-    <form method="POST" action="create_post.php" enctype="multipart/form-data">
+    <form method="POST" action="../controller/create_post_controller.php" enctype="multipart/form-data">
         <table border="1" align="center" bgcolor="#CCCCCC" >
             <caption>Create Blog</caption>
             <tr>

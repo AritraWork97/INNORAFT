@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../../../.cred/db_auth.php';
+require_once '../../../../.cred/auth.php';
 require_once '../validation.php';
 
 session_start();
@@ -40,23 +41,6 @@ $hashed_password = "";
      else
      {
          $email = test_input($_POST["email"]);
-         $ch = curl_init('http://apilayer.net/api/check?access_key='.$access_key.'&email='.$email.'');  
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-         $json = curl_exec($ch);
-         curl_close($ch);
-         $validationResult = json_decode($json, TRUE);
-         if ($validationResult['format_valid'] && $validationResult['smtp_check']) {
-          echo "asdsa";
-         } else {
-            $loc = 'register.html';
-            echo "<script>";
-            echo " if(confirm('Invalid email, you are being redirected back to the register page'))
-                    {
-                        window.location.href = '$loc';
-                    }
-                    </script>";
-         }
-        
      }
      if(empty($_POST["password"])){
         $passwordErr = "Write your password";
@@ -92,7 +76,7 @@ $hashed_password = "";
       }
       $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
       $target_path = 'uploads/'. basename($new_file_name);
-      $new_target_path = '../authentication/uploads/'. basename($new_file_name);
+      $new_target_path = 'BLOG/authentication/uploads/'. basename($new_file_name);
       
       if(empty($errors)==true){
          move_uploaded_file($file_tmp,$target_path);
@@ -111,12 +95,12 @@ $hashed_password = "";
 
  $sql_insert_user_table = "insert into user values('$userid','$firstname','$lastname', '$hashed_password', '$address', '$mobile', '$email', '$new_target_path')";
         if($conn->query($sql_insert_user_table) == true){
-        /* $_SESSION['userid'] = $userid;
+        $_SESSION['userid'] = $userid;
          $_SESSION['username'] = $name;
  
          $_SESSION['Active'] = true;
-         header("location:../blog/index.php");
-         exit;*/
+         header("location:../blog/view/index.php");
+         exit;
         } else {
            echo $conn->error;
            echo "<br>";
