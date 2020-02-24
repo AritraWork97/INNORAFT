@@ -3,7 +3,7 @@
 include_once '../../validation.php';
 include_once '../../../../../.cred/db_auth.php';
 
-include_once 'blog.php';
+include_once '../model/blog.php';
 
 session_start();
 
@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
         $target_path = 'uploads/'. basename($new_file_name);
-        $new_target_path = 'create_blog/uploads/'. basename($new_file_name);
+        $new_target_path = 'BLOG/blog/controller/uploads/'. basename($new_file_name);
         
         if(empty($errors)==true){
             echo "vbb";
@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
      }
 
-}
+
  
     $new_post = new post($author_name, $blog_title, $blog_content, $current_time);
 
@@ -61,10 +61,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql_insert_blog_post = "insert into blog_post values('$userid','$blog_post_id','$author_name',
                                                           '$blog_title', '$current_time', '$blog_content', '$new_target_path')";
             if($conn->query($sql_insert_blog_post) == true){
-                header("location:../index.php");
+                header("location:../view/index.php");
             } else {
             echo $conn->error;
             echo "<br>";
             }
+         }
 
 ?>

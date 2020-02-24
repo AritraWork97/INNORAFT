@@ -1,5 +1,5 @@
-
 <?php
+
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
@@ -8,8 +8,8 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
 }
 
 
-include_once '../validation.php';
-include_once '../../../../.cred/db_auth.php';
+include_once '../../validation.php';
+include_once '../../../../../.cred/db_auth.php';
 
 $id = $_GET["location"];
 $userid = $_SESSION['userid'];
@@ -60,11 +60,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
            $errors[]='File size must be excately 2 MB';
         }
         $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
-        $target_path = 'uploads/'. basename($new_file_name);
-        $new_target_path = 'create_blog/uploads/'. basename($new_file_name);
+        $target_path = './uploads/'. basename($new_file_name);
+        $new_target_path = 'BLOG/blog/controller/uploads/'. basename($new_file_name);
         
         if(empty($errors)==true){
-           move_uploaded_file($file_tmp,$new_target_path);
+           move_uploaded_file($file_tmp,$target_path);
         }else{ 
            //print_r($errors);
            $new_target_path = $prev_image_path;
@@ -74,43 +74,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             where blog_post_id = '$id' AND userid = '$userid'";
                             $result1 = $conn->query($sql_del);
                             if($result1 == true) {
-                                header("location:index.php");
-                            } 
+                                header("location:../view/index.php");
+                            } else {
+                                echo "hjhjhj";
+                            }
  
 }
+
 ?>
-
-<html>
-<head>
-</head>
-<body>
-    <link rel="stylesheet" href="update_data.css"></link>
-    <script src="update_data.js"></script>
-    <form method="POST" action="" enctype="multipart/form-data">
-        <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
-            <caption>Edit Blog</caption>
-            <tr>
-                <th>Enter New Blog Title</th>
-                <td><input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/></td>
-            </tr>
-            <tr>
-                <th>Enter New Blog Content</th>
-                <td><textarea rows="20" cols="20" name="content" id="content"><?php echo $content?></textarea></td>
-            </tr>
-            <tr>  
-               <td>Upload Image : </td>
-               <td>
-               <input type="file" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
-               </td>
-            </tr>
-            <input type="hidden" name = 'id' value=''/>
-            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
-            </td>
-            </tr>
-        </table>
-    </form>
-</body>
-</html>
-
-
-
