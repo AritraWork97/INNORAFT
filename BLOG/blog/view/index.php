@@ -44,7 +44,7 @@ require '../controller/index_controller.php';
                   <img src="<?php echo '../../../'.$row['img_path'] ?>" width='100px' height='100px'>
                   <h1><?php echo $row['blog_title'] ?></h1>
                   <p><?php echo substr($row['blog_data'], 0, 6); ?></p>
-                  <form action='index_controller.php' method='POST'>
+                  <form action='../controller/index_controller.php' method='POST'>
                     <input type='submit' name='action' value='Display'/>
                     <input type='hidden' name='data' value="<?php echo $row['blog_post_id'] ?>"/>
                   </form>

@@ -4,6 +4,7 @@ require_once '../../../../../.cred/db_auth.php';
 
 session_start();
 
+$fullname = "";
 $css_class = "";
 
  /* Starts the session */
@@ -11,22 +12,16 @@ $css_class = "";
          $css_class = 'main-div';
         } else {
           $userid = $_SESSION['userid'];
+          $fullname = $_SESSION['username'];
           $css_class = 'main-div-2';
         }
 
-   
-    $fullname = "";
-
-
-      $sql_user_queery = "select user.user_first_name, user.user_last_name, user.img_path from user";
+      $sql_user_queery = "select img_path from user where userid='".$userid."'";
       $result_user = $conn->query($sql_user_queery);
       if($result_user){     
         if(mysqli_num_rows($result_user) > 0){
                 while($row = mysqli_fetch_array($result_user)){
-                    $firstname = $row['user_first_name'];
-                    $lastname = $row['user_last_name'];
                     $img_path = $row['img_path'];
-                    $fullname = $firstname.' '.$lastname;
                 }
             }
         }
@@ -36,7 +31,7 @@ $css_class = "";
             
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if($_POST['action'] == 'Display') {
-              header("location:individual_post/show_blog.php?data=".$_POST['data']);
+              header("location:../view/show_blog.php?data=".$_POST['data']);
           } 
           
 
