@@ -8,7 +8,7 @@ include_once '../model/blog.php';
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../../authentication/login.html");
+    header("location:../../home.php/login");
     exit;
    }
 

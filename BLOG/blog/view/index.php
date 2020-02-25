@@ -16,7 +16,7 @@ require '../controller/index_controller.php';
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarNav">
       <div class="user">
-        <?php if(isset($_SESSION['Active']) == true): ?>
+        <?php if(isset($_SESSION['Active']) == TRUE): ?>
             <img src="<?php echo '../../../'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
             <a class="nav-link" href="../../authentication/logout.php">Log out <span class="sr-only">(current)</span></a>

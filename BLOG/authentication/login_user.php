@@ -39,11 +39,11 @@ if(isset($_POST['Submit'])){
         $_SESSION['username'] = $name;
 
         $_SESSION['Active'] = true;
-        header("location:../blog/view/index.php");
+        header("location:../home.php/index");
         exit;
 
     } else {
-        $loc = 'login.html';
+        $loc = '../home.php/login';
         echo "<script>";
         echo " if(confirm('Invalid credentials, you are being redirected back to the login page'))
                 {
