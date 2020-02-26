@@ -19,7 +19,7 @@ require '../controller/index_controller.php';
         <?php if(isset($_SESSION['Active']) == TRUE): ?>
             <img src="<?php echo '../../../'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
-            <a class="nav-link" href="../../authentication/logout.php">Log out <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../../home.php/logout">Log out <span class="sr-only">(current)</span></a>
         <?php endif; ?>
       </div>
          <ul class="navbar-nav" style="float: right; margin-top : 12px;">
@@ -31,8 +31,8 @@ require '../controller/index_controller.php';
     </nav>
     </div>
     <div>
-    <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
-         <button type="button" class="btn btn-primary show-post"><a href="create_post.php">Add More Post</a></button>
+    <button type="button" class="btn btn-primary show-post"><a href="../../home.php/show_my_posts">Show my posts</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="../../home.php/create_post">Add More Post</a></button>
     </div>
     <div class='container'>
       <section class='cards-wrapper'>

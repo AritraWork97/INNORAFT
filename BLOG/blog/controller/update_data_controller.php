@@ -3,7 +3,7 @@
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../authentication/login.html");
+    header("location:../../home.php/login");
     exit;
 }
 
@@ -11,8 +11,7 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
 include_once '../../validation.php';
 include_once '../../../../../.cred/db_auth.php';
 
-$id = $_SERVER['QUERY_STRING'];
-$id = substr($id, 9);
+$id = $_GET['data'];
 $userid = $_SESSION['userid'];
 $title = "";
 $content = "";
@@ -79,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $result1 = $conn->query($sql);
     if($result1 == true) {
         echo "Success";
-        header("location:../view/index.php");
+        header("location:../../home.php/index");
     } 
     else {
         print_r($conn->error);

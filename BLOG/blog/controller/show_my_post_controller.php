@@ -4,7 +4,7 @@ require_once '../../../../../.cred/db_auth.php';
 
 session_start();
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../../authentication/login.html");
+    header("location:../../home.php/login");
     exit;
    }
 
@@ -17,7 +17,7 @@ $result = $conn->query($sql_blog_details);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if($_POST['action'] == 'Delete') {
         $blog_id = $_POST['id'];
-        $loc = '../controller/delete_my_post.php?id='.$blog_id;
+        $loc = '../../home.php/delete_individual_post?data='.$blog_id;
             echo "<script>";
             echo " if(confirm('Are You sure?'))
                     {
@@ -27,9 +27,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                
            } else if($_POST['action'] == 'Edit') {
                $id = $_POST['id'];
-               header("location:../view/update_data.php?location=".$id);
+               header("location:../../home.php/update_data?data=".$id);
            }  else if($_POST['action'] == 'Display') {
-               header("location:../view/show_blog.php?data=".$_POST['id']);
+               header("location:../../home.php/show_individual_post?data=".$_POST['id']);
            } 
            
 

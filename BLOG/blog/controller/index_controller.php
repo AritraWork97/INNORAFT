@@ -30,7 +30,7 @@ $css_class = "";
             
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if($_POST['action'] == 'Display') {
-              header("location:../view/show_blog.php?data=".$_POST['data']);
+              header("location:../../home.php/show_individual_post?data=".$_POST['data']);
           } 
           
 
