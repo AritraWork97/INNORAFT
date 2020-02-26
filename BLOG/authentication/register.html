@@ -2,13 +2,14 @@
 <head>
 <title>Registration Table</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <body>
-    <form method="POST" action="register_user.php" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data">
         <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
             <caption>Registration form</caption>
             <tr>
                 <th>Enter your first name</th>
-                <td><input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name" required/></td>
+                <td><input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name"/></td>
             </tr>
             <tr>
                 <th>Enter your last name</th>
@@ -40,11 +41,12 @@
                 <input required type="file" name="image" required>
                 </td>
              </tr>
-            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
+            <td colspan="2" align="center"><input id="submit"type="submit" value="Save My Data"/>
                 <input type="reset" value="Reset Data"/>
             </td>
             </tr>
             </table>
     </form>
 </body>
+<script src="register.js"></script>
 </html>

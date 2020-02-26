@@ -12,16 +12,19 @@ $hashed_password = "";
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["firstname"])) {
+       echo "First name is required";
        $firstnameErr = "First Name is required";
     }else {
        $firstname = test_input($_POST["firstname"]);
     }
     if (empty($_POST["lastname"])) {
+      echo "Last name is required";
        $lastnameErr = "Last name is required";
     }else {
        $lastname = test_input($_POST["lastname"]);
     }
     if(empty($_POST["address"])){
+      echo "Address is required";
        $addressErr = "Write your address";
     }
     else
@@ -29,6 +32,7 @@ $hashed_password = "";
        $address = test_input($_POST["address"]);
     }
     if(empty($_POST["mobile_number"])){
+      echo "Mobile Number is required";
        $mobileErr = "Write your phone number";
     }
     else
@@ -36,6 +40,7 @@ $hashed_password = "";
        $mobile = test_input($_POST["mobile_number"]);
     }
     if(empty($_POST["email"])){
+      echo "Email is required";
         $emailErr = "Write your email";
      }
      else
@@ -43,6 +48,7 @@ $hashed_password = "";
          $email = test_input($_POST["email"]);
      }
      if(empty($_POST["password"])){
+        echo "Password is required";
         $passwordErr = "Write your password";
      }
      else
@@ -50,6 +56,7 @@ $hashed_password = "";
         $password = test_input($_POST["password"]);
      }
      if(empty($_POST["reenter_password"])){
+        echo "Enter the same password is required";
         $check_passwordErr = "Enter same password";
      }
      else
@@ -95,11 +102,12 @@ $hashed_password = "";
 
  $sql_insert_user_table = "insert into user values('$userid','$firstname','$lastname', '$hashed_password', '$address', '$mobile', '$email', '$new_target_path')";
         if($conn->query($sql_insert_user_table) == true){
+           echo "Successfully inserted";
         $_SESSION['userid'] = $userid;
          $_SESSION['username'] = $name;
  
          $_SESSION['Active'] = true;
-         header("location:../home.php/index");
+         //header("location:../home.php/index");
          exit;
         } else {
            echo $conn->error;
