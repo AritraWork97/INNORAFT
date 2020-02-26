@@ -40,7 +40,7 @@ $hashed_password = "";
      else
      {
          $email = test_input($_POST["email"]);
-         $ch = curl_init('http://apilayer.net/api/check?access_key='.$access_key.'&email='.$email.'');  
+         /*$ch = curl_init('http://apilayer.net/api/check?access_key='.$access_key.'&email='.$email.'');  
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
          $json = curl_exec($ch);
          curl_close($ch);
@@ -55,7 +55,7 @@ $hashed_password = "";
                         window.location.href = '$loc';
                     }
                     </script>";
-         }
+         }*/
         
      }
      if(empty($_POST["password"])){

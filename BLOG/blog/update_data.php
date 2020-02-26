@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -21,7 +20,7 @@ $new_target_path = "";
 $current_time = "";
 
 
-$sql_blog_details = "SELECT blog_post.blog_title, blog_post.img_path, blog_post.blog_data FROM blog_post where blog_post.blog_post_id = '$id'";
+$sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where blog_post_id = '".$id."'";
     $result = $conn->query($sql_blog_details);
     if($result){
         if(mysqli_num_rows($result) > 0){
@@ -83,9 +82,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<link rel="stylesheet" href="update_data.css"></link>
 <body>
-    <link rel="stylesheet" href="update_data.css"></link>
-    <script src="update_data.js"></script>
     <form method="POST" action="" enctype="multipart/form-data">
         <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
             <caption>Edit Blog</caption>
@@ -100,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <tr>  
                <td>Upload Image : </td>
                <td>
-               <input type="file" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
+               <input type="file" name="image" class="image-1" value=""><span class="input-class"><?php echo $prev_image_path?></span>
                </td>
             </tr>
             <input type="hidden" name = 'id' value=''/>
@@ -110,6 +109,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </table>
     </form>
 </body>
+<script>
+    $(document).ready(() => {
+        $('.image-1').change(() => {
+            console.log("Working");
+            var file = $('.image-1')[0].files[0].name;
+            $("span").html(file);
+        })
+    })
+</script>
 </html>
 
 

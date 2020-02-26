@@ -5,36 +5,29 @@ require_once '../../../../.cred/db_auth.php';
 session_start();
 
 $css_class = "";
+$fullname = "";
 
  /* Starts the session */
       if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
          $css_class = 'main-div';
         } else {
           $userid = $_SESSION['userid'];
+          $fullname = $_SESSION['username'];
           $css_class = 'main-div-2';
+          $sql_user_details = "SELECT img_path FROM user where userid ='".$userid."'";
+          $result = $conn->query($sql_user_details);
+          if($result){
+              if(mysqli_num_rows($result) > 0){
+                      while($row = mysqli_fetch_array($result)){
+                          $img_path = $row['img_path'];
+                      }
+                      mysqli_free_result($result);
+                  } 
+              } else {
+              echo "ERROR: Could not able to execute";
+              }
+
         }
-
-   
-    $fullname = "";
-
-
-      $sql_user_queery = "select user.user_first_name, user.user_last_name, user.img_path from user";
-      $result_user = $conn->query($sql_user_queery);
-      if($result_user){     
-        if(mysqli_num_rows($result_user) > 0){
-                while($row = mysqli_fetch_array($result_user)){
-                    $firstname = $row['user_first_name'];
-                    $lastname = $row['user_last_name'];
-                    $img_path = $row['img_path'];
-                    $fullname = $firstname.' '.$lastname;
-                }
-            }
-        }
-
-
-        
-
-
 ?>
 
 
@@ -70,8 +63,13 @@ $css_class = "";
     </nav>
     </div>
     <div>
-    <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
+    <?php if(isset($_SESSION['Active']) == true): ?>
+         <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
          <button type="button" class="btn btn-primary show-post"><a href="create_blog/index.php">Add More Post</a></button>
+    <?php else: ?>
+          <button type="button" class="btn btn-primary show-post"><a href="../authentication/login.html">Login</a></button>
+          <button type="button" class="btn btn-primary show-post"><a href="../authentication/register.html">Register</a></button>
+    <?php endif ?>    
     </div>
   </body>
 </html>

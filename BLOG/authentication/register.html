@@ -2,7 +2,9 @@
 <head>
 <title>Registration Table</title>
 </head>
+<script src="register.js"></script>
 <body>
+    <button type="button" class="btn btn-primary show-post"><a href="login.html">Registered? Login Here</a></button>
     <form method="POST" action="register_user.php" enctype="multipart/form-data">
         <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
             <caption>Registration form</caption>
@@ -28,7 +30,7 @@
             </tr>
             <tr>
                 <th>Enter your mobile</th>
-                <td><input type="number" name="mobile_number" id="mobile_number" required/></td>
+                <td><input type="text" name="mobile_number" id="mobile_number" required/></td>
             </tr>
             <tr>
                 <th>Enter your address</th>
