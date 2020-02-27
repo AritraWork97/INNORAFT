@@ -16,10 +16,10 @@ require '../controller/index_controller.php';
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarNav">
       <div class="user">
-        <?php if(isset($_SESSION['Active']) == true): ?>
+        <?php if(isset($_SESSION['Active']) == TRUE): ?>
             <img src="<?php echo '../../../'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
-            <a class="nav-link" href="../../authentication/logout.php">Log out <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../../home.php/logout">Log out <span class="sr-only">(current)</span></a>
         <?php endif; ?>
       </div>
          <ul class="navbar-nav" style="float: right; margin-top : 12px;">
@@ -31,8 +31,8 @@ require '../controller/index_controller.php';
     </nav>
     </div>
     <div>
-    <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
-         <button type="button" class="btn btn-primary show-post"><a href="create_post.php">Add More Post</a></button>
+    <button type="button" class="btn btn-primary show-post"><a href="../../home.php/show_my_posts">Show my posts</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="../../home.php/create_post">Add More Post</a></button>
     </div>
     <div class='container'>
       <section class='cards-wrapper'>
@@ -44,7 +44,7 @@ require '../controller/index_controller.php';
                   <img src="<?php echo '../../../'.$row['img_path'] ?>" width='100px' height='100px'>
                   <h1><?php echo $row['blog_title'] ?></h1>
                   <p><?php echo substr($row['blog_data'], 0, 6); ?></p>
-                  <form action='index_controller.php' method='POST'>
+                  <form action='../controller/index_controller.php' method='POST'>
                     <input type='submit' name='action' value='Display'/>
                     <input type='hidden' name='data' value="<?php echo $row['blog_post_id'] ?>"/>
                   </form>

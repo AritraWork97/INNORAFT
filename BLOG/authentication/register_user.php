@@ -99,7 +99,7 @@ $hashed_password = "";
          $_SESSION['username'] = $name;
  
          $_SESSION['Active'] = true;
-         header("location:../blog/view/index.php");
+         header("location:../home.php/index");
          exit;
         } else {
            echo $conn->error;

@@ -12,7 +12,7 @@ if(isset($_POST['Submit'])){
 
     //print_r($email);
 
-    $sql_user_details = "SELECT user.userid, user.user_pass, user.user_first_name, user.user_last_name FROM user where user.user_email = '$email'";
+    $sql_user_details = "SELECT userid, user_pass, user_first_name, user_last_name FROM user where user_email='".$email."'";
     $result = $conn->query($sql_user_details);
     if($result){
         if(mysqli_num_rows($result) > 0){
@@ -32,18 +32,18 @@ if(isset($_POST['Submit'])){
     $result1 = password_verify($password, $check_password);
 
     /* Check if form's username and password matches */
-    if( $result1 === true)  {
+    if( $result1 === TRUE)  {
 
         /* Success: Set session variables and redirect to protected page */
         $_SESSION['userid'] = $id;
         $_SESSION['username'] = $name;
 
         $_SESSION['Active'] = true;
-        header("location:../blog/index.php");
+        header("location:../home.php/index");
         exit;
 
     } else {
-        $loc = 'login.html';
+        $loc = '../home.php/login';
         echo "<script>";
         echo " if(confirm('Invalid credentials, you are being redirected back to the login page'))
                 {

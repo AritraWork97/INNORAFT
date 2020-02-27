@@ -3,7 +3,7 @@
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../authentication/login.html");
+    header("location:../../home.php/login");
     exit;
 }
 
@@ -11,13 +11,14 @@ if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not l
 include_once '../../validation.php';
 include_once '../../../../../.cred/db_auth.php';
 
-$id = $_GET["location"];
+$id = $_GET['data'];
 $userid = $_SESSION['userid'];
 $title = "";
 $content = "";
 $blog_title = "";
 $blog_content = "";
 $new_target_path = "";
+$prev_image_path = "";
 $current_time = "";
 
 
@@ -38,6 +39,7 @@ $sql_blog_details = "SELECT blog_post.blog_title, blog_post.img_path, blog_post.
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $form_id = $_POST['id'];
     $blog_title = test_input($_POST['title']);
     $blog_content = test_input($_POST['content']);
     $current_time = date("Y/m/d");
@@ -60,25 +62,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
            $errors[]='File size must be excately 2 MB';
         }
         $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
-        $target_path = './uploads/'. basename($new_file_name);
+        $target_path = 'uploads/'. basename($new_file_name);
         $new_target_path = 'BLOG/blog/controller/uploads/'. basename($new_file_name);
         
-        if(empty($errors)==true){
-           move_uploaded_file($file_tmp,$target_path);
-        }else{ 
+        if (empty($errors)== TRUE) {
+           move_uploaded_file($file_tmp, $target_path);
+        }
+        else { 
            //print_r($errors);
            $new_target_path = $prev_image_path;
         }
     }
-    $sql_del = "update blog_post set  blog_title='$blog_title', img_path='$new_target_path' ,blog_data = '$blog_content', blog_date = '$current_time'
-            where blog_post_id = '$id' AND userid = '$userid'";
-                            $result1 = $conn->query($sql_del);
-                            if($result1 == true) {
-                                header("location:../view/index.php");
-                            } else {
-                                echo "hjhjhj";
-                            }
+    $sql = "UPDATE blog_post SET blog_title='".$blog_title."', blog_date='".$current_time."', img_path='".$new_target_path."',blog_data='".$blog_content."' WHERE blog_post_id='".$form_id."'";
+
+    $result1 = $conn->query($sql);
+    if($result1 == true) {
+        echo "Success";
+        header("location:../../home.php/index");
+    } 
+    else {
+        print_r($conn->error);
+    }
  
 }
-
-?>
