@@ -74,7 +74,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             $result1 = $conn->query($sql_del);
                             if($result1 == true) {
                                 header("location:index.php");
-                            } 
+                            } else {
+                                $loc = './update_data.php';
+                                echo "<script>";
+                                echo " if(confirm('Post not created, try again'))
+                                         {
+                                            window.location.href = '$loc';
+                                         }
+                                         </script>";
+                            }
  
 }
 ?>

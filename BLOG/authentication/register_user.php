@@ -118,8 +118,14 @@ $hashed_password = "";
          header("location:../blog/index.php");
          exit;*/
         } else {
-           echo $conn->error;
-           echo "<br>";
-        }
+         $loc = './register.html';
+         echo "<script>";
+         echo " if(confirm('Registration unsuccessfull, try again'))
+                  {
+                     window.location.href = '$loc';
+                  }
+                  </script>";
+     }
+        
 
 ?>

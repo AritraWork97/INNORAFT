@@ -63,8 +63,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($conn->query($sql_insert_blog_post) == true){
                 header("location:../index.php");
             } else {
-            echo $conn->error;
-            echo "<br>";
-            }
+               $loc = './index.php';
+               echo "<script>";
+               echo " if(confirm('Post not created, try again'))
+                        {
+                           window.location.href = '$loc';
+                        }
+                        </script>";
+           }
 
 ?>
