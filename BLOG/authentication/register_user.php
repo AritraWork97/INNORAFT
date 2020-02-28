@@ -111,12 +111,12 @@ $hashed_password = "";
 
  $sql_insert_user_table = "insert into user values('$userid','$firstname','$lastname', '$hashed_password', '$address', '$mobile', '$email', '$new_target_path')";
         if($conn->query($sql_insert_user_table) == true){
-        /* $_SESSION['userid'] = $userid;
+         $_SESSION['userid'] = $userid;
          $_SESSION['username'] = $name;
  
          $_SESSION['Active'] = true;
          header("location:../blog/index.php");
-         exit;*/
+         exit;
         } else {
          $loc = './register.html';
          echo "<script>";
