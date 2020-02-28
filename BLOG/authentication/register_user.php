@@ -7,11 +7,11 @@ require_once '../validation.php';
 session_start();
 
 $firstname = $lastname = $password = $check_password = $mobile = $address = $email = "";
+$new_target_path = "";
 
 $hashed_password = "";
 
- if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["firstname"])) {
+   if (empty($_POST["firstname"])) {
        echo "First name is required";
        $firstnameErr = "First Name is required";
     }else {
@@ -91,7 +91,8 @@ $hashed_password = "";
          print_r($errors);
       }
    }
- }
+
+   print_r($_GET);
 
  if($password === $check_password) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -102,16 +103,20 @@ $hashed_password = "";
 
  $sql_insert_user_table = "insert into user values('$userid','$firstname','$lastname', '$hashed_password', '$address', '$mobile', '$email', '$new_target_path')";
         if($conn->query($sql_insert_user_table) == true){
-           echo "Successfully inserted";
         $_SESSION['userid'] = $userid;
          $_SESSION['username'] = $name;
  
          $_SESSION['Active'] = true;
-         //header("location:../home.php/index");
+         echo "Successfully inserted";
+         header("location:../home.php/index");
          exit;
         } else {
-           echo $conn->error;
-           echo "<br>";
-        }
-
-?>
+         $loc = './register.html';
+         echo "<script>";
+         echo " if(confirm('Registration unsuccessfull, try again'))
+                  {
+                     window.location.href = '$loc';
+                  }
+                  </script>";
+   }
+        
