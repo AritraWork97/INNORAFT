@@ -2,13 +2,14 @@
 <head>
 <title>Registration Table</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <body>
-    <form method="POST" action="register_user.php" enctype="multipart/form-data">
+    <form method="POST" id="userform" action="" enctype="multipart/form-data">
         <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
             <caption>Registration form</caption>
             <tr>
                 <th>Enter your first name</th>
-                <td><input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name" required/></td>
+                <td><input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name"/></td>
             </tr>
             <tr>
                 <th>Enter your last name</th>
@@ -28,7 +29,7 @@
             </tr>
             <tr>
                 <th>Enter your mobile</th>
-                <td><input type="number" name="mobile_number" id="mobile_number" required/></td>
+                <td><input type="text" name="mobile_number" id="mobile_number" required/></td>
             </tr>
             <tr>
                 <th>Enter your address</th>
@@ -37,14 +38,17 @@
             <tr>  
                 <td>Upload Image : </td>
                 <td>
-                <input required type="file" name="image" required>
+                <input required id="image" type="file" name="image" required>
                 </td>
              </tr>
-            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
+            <td colspan="2" align="center">
+                <button id="check_data">Check Data</button>
+                <input id="submit"type="submit" value="Save My Data"/>
                 <input type="reset" value="Reset Data"/>
             </td>
             </tr>
             </table>
     </form>
 </body>
+<script src="register.js"></script>
 </html>

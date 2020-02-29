@@ -63,9 +63,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($conn->query($sql_insert_blog_post) == true){
                 header("location:../view/index.php");
             } else {
+<<<<<<< HEAD:BLOG/blog/controller/create_post_controller.php
             echo $conn->error;
             echo "<br>";
             }
          }
+=======
+               $loc = './index.php';
+               echo "<script>";
+               echo " if(confirm('Post not created, try again'))
+                        {
+                           window.location.href = '$loc';
+                        }
+                        </script>";
+           }
+>>>>>>> 6bba633fd45e5559b6858264e96878da44eff76b:BLOG/blog/create_blog/create_post.php
 
 ?>
