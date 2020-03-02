@@ -12,20 +12,22 @@ phone.onkeypress = function(){
     }
  }
 
- $(document).ready(() => {
-    $("#check_data").click((e) => {
-       e.preventDefault()
-       var data1 = $("#userform").serializeArray();
-       $.ajax({
-         type: 'POST',
-         url: 'register_user.php',
-         data: data1,
-         success : (response) => {
-            $("#userform").submit();
-         },
-         error : (e) => {
-            alert(e);
-         }
-      })
-    })
- })
+ $(document).ready(function(){
+
+   $('#submit').attr("disabled", true);
+
+
+ $('#firstname').onblur(function(){
+  var firstname = $('#firstname').val();
+  $.ajax({
+   type: 'POST',
+   data: firstname,
+   success: function(response){
+   alert(response);
+   }
+  });
+
+ });
+
+
+});
