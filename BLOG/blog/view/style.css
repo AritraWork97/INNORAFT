@@ -19,13 +19,8 @@
 
 .user h5 {
   position: absolute;
-<<<<<<< HEAD:BLOG/blog/view/style.css
   right: 9%;
   margin-top: 15px;
-=======
-  right: 125px;
-    margin-top: 16px;
->>>>>>> 6bba633fd45e5559b6858264e96878da44eff76b:BLOG/blog/style.css
 }
 
 .blog-content {

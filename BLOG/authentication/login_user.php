@@ -43,11 +43,7 @@ if(isset($_POST['Submit'])){
         exit;
 
     } else {
-<<<<<<< HEAD
         $loc = '../home.php/login';
-=======
-        $loc = './login.html';
->>>>>>> 6bba633fd45e5559b6858264e96878da44eff76b
         echo "<script>";
         echo " if(confirm('Invalid credentials, you are being redirected back to the login page'))
                 {

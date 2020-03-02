@@ -73,7 +73,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
            $new_target_path = $prev_image_path;
         }
     }
-<<<<<<< HEAD:BLOG/blog/controller/update_data_controller.php
     $sql = "UPDATE blog_post SET blog_title='".$blog_title."', blog_date='".$current_time."', img_path='".$new_target_path."',blog_data='".$blog_content."' WHERE blog_post_id='".$form_id."'";
 
     $result1 = $conn->query($sql);
@@ -86,66 +85,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
  
 }
-=======
-    $sql_del = "update blog_post set  blog_title='$blog_title', img_path='$new_target_path' ,blog_data = '$blog_content', blog_date = '$current_time'
-            where blog_post_id = '$id' AND userid = '$userid'";
-                            $result1 = $conn->query($sql_del);
-                            if($result1 == true) {
-                                header("location:index.php");
-                            } else {
-                                $loc = './update_data.php';
-                                echo "<script>";
-                                echo " if(confirm('Post not created, try again'))
-                                         {
-                                            window.location.href = '$loc';
-                                         }
-                                         </script>";
-                            }
- 
-}
-?>
-
-<html>
-<head>
-</head>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<link rel="stylesheet" href="update_data.css"></link>
-<body>
-    <form method="POST" action="" enctype="multipart/form-data">
-        <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
-            <caption>Edit Blog</caption>
-            <tr>
-                <th>Enter New Blog Title</th>
-                <td><input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/></td>
-            </tr>
-            <tr>
-                <th>Enter New Blog Content</th>
-                <td><textarea rows="20" cols="20" name="content" id="content"><?php echo $content?></textarea></td>
-            </tr>
-            <tr>  
-               <td>Upload Image : </td>
-               <td>
-               <input type="file" name="image" class="image-1" value=""><span class="input-class"><?php echo $prev_image_path?></span>
-               </td>
-            </tr>
-            <input type="hidden" name = 'id' value=''/>
-            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
-            </td>
-            </tr>
-        </table>
-    </form>
-</body>
-<script>
-    $(document).ready(() => {
-        $('.image-1').change(() => {
-            console.log("Working");
-            var file = $('.image-1')[0].files[0].name;
-            $("span").html(file);
-        })
-    })
-</script>
-</html>
-
-
-
->>>>>>> 6bba633fd45e5559b6858264e96878da44eff76b:BLOG/blog/update_data.php

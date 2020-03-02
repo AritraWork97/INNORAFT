@@ -31,8 +31,13 @@ require '../controller/index_controller.php';
     </nav>
     </div>
     <div>
-    <button type="button" class="btn btn-primary show-post"><a href="../../home.php/show_my_posts">Show my posts</a></button>
-         <button type="button" class="btn btn-primary show-post"><a href="../../home.php/create_post">Add More Post</a></button>
+    <?php if(isset($_SESSION['Active']) == true): ?>
+         <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="create_blog/index.php">Add More Post</a></button>
+    <?php else: ?>
+          <button type="button" class="btn btn-primary show-post"><a href="../../home.php/login">Login</a></button>
+          <button type="button" class="btn btn-primary show-post"><a href="../../home.php/register">Register</a></button>
+    <?php endif ?>    
     </div>
     <div class='container'>
       <section class='cards-wrapper'>
