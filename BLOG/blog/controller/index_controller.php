@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../../../.cred/db_auth.php';
+require_once '../../../.cred/db_auth.php';
 
 session_start();
 

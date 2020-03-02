@@ -1,13 +1,13 @@
 <?php
 
-require '../controller/index_controller.php';
+require '../BLOG/blog/controller/index_controller.php';
 
 ?>
 
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/PHP/BLOG/blog/view/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </head>
@@ -17,9 +17,9 @@ require '../controller/index_controller.php';
       <div class="collapse navbar-collapse" id="navbarNav">
       <div class="user">
         <?php if(isset($_SESSION['Active']) == TRUE): ?>
-            <img src="<?php echo '../../../'.$img_path ?>">
+            <img src="<?php echo '../../'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
-            <a class="nav-link" href="../../home.php/logout">Log out <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
         <?php endif; ?>
       </div>
          <ul class="navbar-nav" style="float: right; margin-top : 12px;">
@@ -32,11 +32,11 @@ require '../controller/index_controller.php';
     </div>
     <div>
     <?php if(isset($_SESSION['Active']) == true): ?>
-         <button type="button" class="btn btn-primary show-post"><a href="show_my_post.php">Show my posts</a></button>
-         <button type="button" class="btn btn-primary show-post"><a href="create_blog/index.php">Add More Post</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="show_my_post">Show my posts</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="create_blog">Add More Post</a></button>
     <?php else: ?>
-          <button type="button" class="btn btn-primary show-post"><a href="../../home.php/login">Login</a></button>
-          <button type="button" class="btn btn-primary show-post"><a href="../../home.php/register">Register</a></button>
+          <button type="button" class="btn btn-primary show-post"><a href="login">Login</a></button>
+          <button type="button" class="btn btn-primary show-post"><a href="register">Register</a></button>
     <?php endif ?>    
     </div>
     <div class='container'>
