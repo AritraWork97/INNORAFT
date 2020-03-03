@@ -1,11 +1,11 @@
 <?php
-require_once '../controller/show_my_post_controller.php';
+require_once '../BLOG/blog/controller/show_my_post_controller.php';
 ?>
 
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="show_my_post.css">
+    <link rel="stylesheet" href="/PHP/BLOG/blog/view/show_my_post.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
   </head>
@@ -15,7 +15,7 @@ require_once '../controller/show_my_post_controller.php';
     <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav" style="float: right; margin-top : 48px;">
      <li class="nav-item active">
-        <a class="nav-link" href="../../home.php/logout">Log out <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
     </li>
     </ul>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../../../.cred/db_auth.php';
+require_once '../../../.cred/db_auth.php';
 
 session_start();
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */

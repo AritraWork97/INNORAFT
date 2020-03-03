@@ -1,13 +1,8 @@
-<?php
-require '../controller/create_post_controller.php';
-?>
-
-
 <html>
 <head>
 </head>
 <body>
-    <form method="POST" action="../controller/create_post_controller.php" enctype="multipart/form-data">
+    <form method="POST" action="../blog/controller/create_post_controller.php" enctype="multipart/form-data">
         <table border="1" align="center" bgcolor="#CCCCCC" >
             <caption>Create Blog</caption>
             <tr>

@@ -1,9 +1,7 @@
 <?php
 
 include_once '../../validation.php';
-include_once '../../../../../.cred/db_auth.php';
-
-include_once '../model/blog.php';
+require_once '../../../../../.cred/db_auth.php';
 
 session_start();
 
@@ -52,16 +50,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
      }
 
-
- 
-    $new_post = new post($author_name, $blog_title, $blog_content, $current_time);
-
-    print_r($userid);
-
     $sql_insert_blog_post = "insert into blog_post values('$userid','$blog_post_id','$author_name',
                                                           '$blog_title', '$current_time', '$blog_content', '$new_target_path')";
             if($conn->query($sql_insert_blog_post) == true){
-                header("location:../view/index.php");
+                header("location:../../home.php/index");
             } else {
             echo $conn->error;
             echo "<br>";
