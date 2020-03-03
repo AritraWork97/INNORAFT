@@ -1,42 +1,13 @@
 <?php
 
-session_start();
-
-if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../../home.php/login");
-    exit;
-}
-
-
 include_once '../../validation.php';
 include_once '../../../../../.cred/db_auth.php';
 
-$id = $_GET['data'];
-$userid = $_SESSION['userid'];
-$title = "";
-$content = "";
 $blog_title = "";
 $blog_content = "";
 $new_target_path = "";
-$prev_image_path = "";
 $current_time = "";
 
-
-$sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where blog_post_id = '".$id."'";
-    $result = $conn->query($sql_blog_details);
-    if($result){
-        if(mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_array($result)){
-                    $title = $row['blog_title'];
-                    $content = $row['blog_data'];
-                    $prev_image_path = $row['img_path'];
-                    //print_r($prev_image_path);
-                }
-                mysqli_free_result($result);
-            } else {
-                echo "You have not made any posts";
-    }
-}
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $form_id = $_POST['id'];

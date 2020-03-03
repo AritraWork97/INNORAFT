@@ -1,5 +1,17 @@
 <?php
-require_once '../BLOG/blog/controller/show_my_post_controller.php';
+require_once '../../../.cred/db_auth.php';
+
+session_start();
+if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
+    header("location:../../home.php/login");
+    exit;
+   }
+
+
+$userid = $_SESSION['userid'];
+
+$sql_blog_details = "SELECT blog_post.blog_post_id, blog_post.img_path,blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post where blog_post.userid = '$userid'";
+$result = $conn->query($sql_blog_details);
 ?>
 
 <html>
@@ -27,10 +39,10 @@ require_once '../BLOG/blog/controller/show_my_post_controller.php';
         <?php while($row = mysqli_fetch_array($result)): ?>
         <div class='card blog-content'>
           <div class='card-body' style='border: 1px solid coral'>
-          <img src="<?php echo '../../../'.$row['img_path'] ?>" width='100px' height='100px'>
+          <img src="<?php echo '../../'.$row['img_path'] ?>" width='100px' height='100px'>
           <h1><?php echo $row['blog_title'] ?></h1>
           <p><?php echo substr($row['blog_data'], 0, 6); ?></p>
-          <form action='../controller/show_my_post_controller.php' method='POST'>
+          <form action='../blog/controller/show_my_post_controller.php' method='POST'>
             <input type='submit' name='action' value='Edit'/>
             <input type='submit' name='action' value='Delete'>
             <input type='submit' name='action' value='Display'/>

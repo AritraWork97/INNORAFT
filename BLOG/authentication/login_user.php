@@ -6,7 +6,7 @@ include_once '../validation.php';
 $check_password = "";
 session_start();
 
-if(isset($_POST['Submit'])){
+if (isset($_POST['Submit'])) {
     $email = test_input($_POST['email']);
     $password = test_input($_POST['Password']);
 

@@ -4,5 +4,5 @@
   $_SESSION['userid'] = "";
   $_SESSION['username'] = "";
   session_destroy(); /* Destroy started session */
-  header("location:login.html");  /* Redirect to login page */
+  header("location:../home.php/login");  /* Redirect to login page */
   exit;
