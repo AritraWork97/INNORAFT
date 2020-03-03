@@ -31,13 +31,13 @@ $hashed_password = "";
     {
        $address = test_input($_POST["address"]);
     }
-    if(empty($_POST["mobile_number"])){
+    if(empty($_POST["mobilenumber"])){
       echo "Mobile Number is required";
        $mobileErr = "Write your phone number";
     }
     else
     {
-       $mobile = test_input($_POST["mobile_number"]);
+       $mobile = test_input($_POST["mobilenumber"]);
     }
     if(empty($_POST["email"])){
       echo "Email is required";
@@ -111,7 +111,7 @@ $hashed_password = "";
          header("location:../home.php/index");
          exit;
         } else {
-         $loc = './register.html';
+         $loc = '../home.php/register';
          echo "<script>";
          echo " if(confirm('Registration unsuccessfull, try again'))
                   {
