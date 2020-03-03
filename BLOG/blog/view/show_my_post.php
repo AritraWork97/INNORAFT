@@ -27,6 +27,7 @@ $result = $conn->query($sql_blog_details);
     <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav" style="float: right; margin-top : 48px;">
      <li class="nav-item active">
+        <a class="nav-link" href="index">Return to home page <span class="sr-only">(current)</span></a>
         <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
     </li>
     </ul>

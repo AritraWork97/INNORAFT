@@ -25,6 +25,11 @@
     margin-right: 25px;;
 }
 
+.nav-item a{
+    list-style: none;
+    margin-right: 27px;
+}
+
 .show-post {
     margin-right: 25px;
     float: right;
