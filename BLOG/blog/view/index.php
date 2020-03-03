@@ -44,7 +44,7 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
       <div class="collapse navbar-collapse" id="navbarNav">
       <div class="user">
         <?php if(isset($_SESSION['Active']) == TRUE): ?>
-            <img src="<?php echo '../../'.$img_path ?>">
+            <img src="<?php echo '/PHP/'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
             <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
         <?php endif; ?>
@@ -73,7 +73,7 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
             <?php if(mysqli_num_rows($result) > 0): ?>
               <?php while($row = mysqli_fetch_array($result)): ?>
                 <a class='card cont'>
-                  <img src="<?php echo '../../'.$row['img_path'] ?>" width='100px' height='100px'>
+                  <img src="<?php echo '/PHP/'.$row['img_path'] ?>" width='100px' height='100px'>
                   <h1><?php echo $row['blog_title'] ?></h1>
                   <p><?php echo substr($row['blog_data'], 0, 6); ?></p>
                   <form action='../blog/controller/index_controller.php' method='POST'>

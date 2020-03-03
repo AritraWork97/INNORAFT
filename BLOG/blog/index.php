@@ -1,4 +1,6 @@
 <?php
+echo "Bad thing";
+die;
 
 require_once '../../../../.cred/db_auth.php';
 

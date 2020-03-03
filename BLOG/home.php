@@ -1,5 +1,7 @@
 <?php
 
+
+
 if ('/PHP/BLOG/home.php/index' == parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) {
     include './blog/view/index.php';
 } else if ('/PHP/BLOG/home.php/show_my_posts' == parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) {
