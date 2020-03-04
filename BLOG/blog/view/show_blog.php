@@ -13,7 +13,9 @@ require_once '../BLOG/blog/controller/show_blog_controller.php';
                 <ul class="navbar-nav" style="float: right; margin-top : 48px;">
                 <li class="nav-item active">
                     <a class="nav-link" href="index">Return to home page <span class="sr-only"></span></a>
-                    <a class="nav-link" href="logout">Log out <span class="sr-only"></span></a>
+                    <?php if(isset($_SESSION['Active']) == TRUE): ?>
+                      <a class="nav-link" href="logout">Log out <span class="sr-only"></span></a>
+                      <?php endif; ?>
                 </li>
                 </ul>
                 </div>
