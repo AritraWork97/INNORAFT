@@ -3,25 +3,25 @@
 <head>
     <title>Sign in</title>
 </head>
+<link rel="stylesheet" href="/PHP/BLOG/authentication/login.css">
 <body>
 <div class="container">
-    <button type="button" class="btn btn-primary show-post"><a href="../home.php/register">Not Registered? Register Here</a></button>
+    <div class="form-content">
     <form action="../authentication/login_user.php" method="POST" name="Login_Form">
-        <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
-            <caption>Login form</caption>
-            <tr>
-                <th>Enter your Email ID</th>
-                <td><input name="email" type="username" id="email" placeholder="Username" required autofocus></td>
-            </tr>
-            <tr>
-                <th>Enter your Password</th>
-                <td><input name="Password" type="password" id="inputPassword" placeholder="Password" required></td>
-            </tr>
-            <td colspan="2" align="center">
-                <button name="Submit" value="Login" type="submit">Sign in</button>
-            </td>
+      <div class="form-1">
+          <label for="email">Enter your Email</label>
+          <input name="email" type="username" id="email" placeholder="Username" required autofocus>
+      </div>
+      <div class="form-2">
+          <label for="password">Enter your Password</label>
+          <input name="Password" type="password" id="inputPassword" placeholder="Password" required>
+      </div>
+      <button name="Submit" value="Login" type="submit">Sign in</button>     
+    </div>
     </form>
+  </div>
 </div>
+</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>

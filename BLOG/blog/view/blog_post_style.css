@@ -2,11 +2,14 @@ body {
     margin: 0;
 }
 
-article p{color:#c93c3c;}
+article p{
+  color:#c93c3c;
+}
 
-
-
- .margin10{margin-bottom:10px; margin-right:10px;}
+ .margin10{
+   margin-bottom:10px; 
+   margin-right:10px;
+  }
 
  .main-div {
     width: 100%;
@@ -20,19 +23,24 @@ article p{color:#c93c3c;}
   background-color: coral;
 }
 
-.blog-content {
-    display: inline-flex;
-    margin-right: 15px;
-    width: 150px;
-}
-
-.blog-content .btn {
-    margin-right: 5px;;
-}
-
 .nav-item {
     list-style: none;
     margin-right: 25px;;
+}
+
+.blogShort {
+  width: 100%;
+}
+
+.blogShortContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-content {
+  max-width: 800px;
+    text-align: center;
+    margin: 0 auto
 }
 
 
@@ -46,7 +54,7 @@ article p{color:#c93c3c;}
     list-style: none;
     margin-right: 27px;
     text-decoration: none;
-    color: #337ab7;
+    color: #ffffff;
 }
 
 .show-post a {

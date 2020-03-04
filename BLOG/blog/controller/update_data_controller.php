@@ -8,12 +8,26 @@ $blog_content = "";
 $new_target_path = "";
 $current_time = "";
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $form_id = $_POST['id'];
     $blog_title = test_input($_POST['title']);
     $blog_content = test_input($_POST['content']);
     $current_time = date("Y/m/d");
+    $sql_blog_details = "SELECT img_path FROM blog_post where blog_post_id = '".$form_id."'";
+    $result = $conn->query($sql_blog_details);
+    if($result){
+        if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    $title = $row['blog_title'];
+                    $content = $row['blog_data'];
+                    $prev_image_path = $row['img_path'];
+                    //print_r($prev_image_path);
+                }
+                mysqli_free_result($result);
+            } else {
+                echo "You have not made any posts";
+    }
+}
     if(isset($_FILES['image'])){
         $errors= array();
         $file_name = $_FILES['image']['name'];

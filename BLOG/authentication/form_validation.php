@@ -47,7 +47,14 @@ if(isset($_POST['mobilenumber'])) {
     if(empty($_POST['mobilenumber'])){
         echo "false";
     } else {
-        echo "true";
+        $mob = $_POST['mobilenumber'];
+        $mob_length = strlen($mob);
+        if ($mob_length < 4 || $mob_length > 14)
+        {
+          echo "false";
+        } else {
+          echo "true";
+        }
     }
 }
 

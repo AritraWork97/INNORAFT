@@ -1,0 +1,2 @@
+Redirect /PHP/BLOG/show_my_posts http://localhost/PHP/BLOG/home.php/show_my_posts
+Redirect /PHP/BLOG/home.php http://localhost/PHP/BLOG/home.php/index

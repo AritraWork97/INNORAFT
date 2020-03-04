@@ -90,6 +90,11 @@ body {
 
 .cont img {
   margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+input[type=submit] {
+  background-color: #f5e2df;
 }
 
 
@@ -208,5 +213,3 @@ a:hover {
   font-size: 1em;
   font-weight: normal;
 }
-
-/* MEDIA QUERIES */

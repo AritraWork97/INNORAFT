@@ -28,6 +28,24 @@ $css_class = "";
 
 $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_post_id, blog_post.blog_post_author, blog_post.blog_title, blog_post.blog_data FROM blog_post";
     $result = $conn->query($sql_blog_details);
+    
+    $form_url = "";
+
+    if ($url == '/PHP/BLOG/home.php') {
+      $form_url = '../BLOG/blog/controller/index_controller.php';
+      $login_url = '../BLOG/home.php/login';
+      $logout_url = "../BLOG/home.php/logout";
+      $register_url = '../BLOG/home.php/register';
+      $show_my_post_url = "../BLOG/home.php/show_my_posts";
+      $add_post_url = "../BLOG/home.php/create_post";
+    } else {
+      $form_url = '../blog/controller/index_controller.php';
+      $login_url = 'login';
+      $register_url = 'register';
+      $show_my_post_url = "show_my_posts";
+      $add_post_url = "create_post";
+      $logout_url = "logout";
+    }
 
 ?>
 
@@ -46,7 +64,7 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
         <?php if(isset($_SESSION['Active']) == TRUE): ?>
             <img src="<?php echo '/PHP/'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
-            <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo $logout_url?>">Log out <span class="sr-only">(current)</span></a>
         <?php endif; ?>
       </div>
          <ul class="navbar-nav" style="float: right; margin-top : 12px;">
@@ -59,11 +77,11 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
     </div>
     <div>
     <?php if(isset($_SESSION['Active']) == true): ?>
-         <button type="button" class="btn btn-primary show-post"><a href="show_my_posts">Show my posts</a></button>
-         <button type="button" class="btn btn-primary show-post"><a href="create_post">Add More Post</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="<?php echo $show_my_post_url?>">Show my posts</a></button>
+         <button type="button" class="btn btn-primary show-post"><a href="<?php echo $add_post_url?>">Add More Post</a></button>
     <?php else: ?>
-          <button type="button" class="btn btn-primary show-post"><a href="login">Login</a></button>
-          <button type="button" class="btn btn-primary show-post"><a href="register">Register</a></button>
+          <button type="button" class="btn btn-primary show-post"><a href="<?php echo $login_url?>">Login</a></button>
+          <button type="button" class="btn btn-primary show-post"><a href="<?php echo $register_url?>">Register</a></button>
     <?php endif ?>    
     </div>
     <div class='container'>
@@ -76,8 +94,8 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
                   <img src="<?php echo '/PHP/'.$row['img_path'] ?>" width='100px' height='100px'>
                   <h1><?php echo $row['blog_title'] ?></h1>
                   <p><?php echo substr($row['blog_data'], 0, 6); ?></p>
-                  <form action='../blog/controller/index_controller.php' method='POST'>
-                    <input type='submit' name='action' value='Display'/>
+                  <form action='<?php echo $form_url?>' method='POST'>
+                    <input type='submit' name='action' class="btn" value='Display'/>
                     <input type='hidden' name='data' value="<?php echo $row['blog_post_id'] ?>"/>
                   </form>
                 </a>
