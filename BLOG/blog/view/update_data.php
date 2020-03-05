@@ -36,31 +36,32 @@ $sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where
 <head>
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/PHP/BLOG/blog/view/update_data.css">
 <body>
-    <link rel="stylesheet" href="/PHP/BLOG/blog/view/update_data.css"></link>
-    <form method="POST" action="../blog/controller/update_data_controller.php" enctype="multipart/form-data">
-        <table border="1" align="center" bgcolor="#CCCCCC" enctype="multipart/form-data">
-            <caption>Edit Blog</caption>
-            <tr>
-                <th>Enter New Blog Title</th>
-                <td><input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/></td>
-            </tr>
-            <tr>
-                <th>Enter New Blog Content</th>
-                <td><textarea rows="20" cols="20" name="content" id="content"><?php echo $content?></textarea></td>
-            </tr>
-            <tr>  
-               <td>Upload Image : </td>
-               <td>
-               <input type="file" class="image" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
-               </td>
-            </tr>
-            <input type="hidden" name = 'id' value='<?php echo $blog_id; ?>'/>
-            <td colspan="2" align="center"><input type="submit" value="Save My Data"/>
-            </td>
-            </tr>
-        </table>
+<div class="container">
+    <div class="form-content">
+     <title>Update Data</title>
+        <form method="POST" action="../blog/controller/update_data_controller.php" enctype="multipart/form-data">
+          <div class="form-1">
+                <label for="title">Enter blog Title</label>
+                <input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/>
+          </div>
+          <div class="form-2">
+                <label for="content">Enter New blog content</label>
+                <textarea rows="10" cols="20" name="content" id="content"><?php echo $content?></textarea>
+          </div>
+          <div class="form-3">
+                <label for="content">Upload New Image</label>
+                <input type="file" class="image" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
+          </div>
+          <input type="hidden" name = 'id' value='<?php echo $blog_id; ?>'/>
+          <div class="btn-group">
+              <button class="btn" id="submit"type="submit" value="Save My Data">Save My data</button>
+         </div>
     </form>
+    </div>
+</div>
 </body>
 <script>
     $(document).ready(() => {
