@@ -1,3 +1,18 @@
+body {
+  background: url(2927262.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+title {
+  color: white;
+    display: inline-flex;
+    position: absolute;
+    top: 29%;
+    left: 47%;
+    font-size: large;
+}
+
+
 .container {
   display: flex;
   width: 100%;
@@ -6,5 +21,35 @@
 .form-content {
   display: flex;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0px auto;
+  margin-top: 144px;
+  border: 1px solid #787373;
+  padding-top: 100px;
+  padding-bottom: 35px;
+  padding-right: 9px;
+  color: white;
+  
+}
+
+.form-content button {
+  margin: 38px 131px;
+  color: white;
+    border: 1px solid white;
+}
+
+.form-1 {
+  margin-bottom: 25px;
+  margin-left: 5px;
+}
+
+.form-2 {
+  margin-left: 5px;
+}
+
+.form-1 label {
+  margin-right: 55px;
+}
+
+.form-2 label {
+  margin-right: 25px;
 }

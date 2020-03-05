@@ -4,19 +4,21 @@
     <title>Sign in</title>
 </head>
 <link rel="stylesheet" href="/PHP/BLOG/authentication/login.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <body>
 <div class="container">
     <div class="form-content">
+     <title>Login Form</title>
     <form action="../authentication/login_user.php" method="POST" name="Login_Form">
       <div class="form-1">
           <label for="email">Enter your Email</label>
-          <input name="email" type="username" id="email" placeholder="Username" required autofocus>
+          <input name="email" class="form-control" type="username" id="email" placeholder="Username" required autofocus>
       </div>
       <div class="form-2">
           <label for="password">Enter your Password</label>
-          <input name="Password" type="password" id="inputPassword" placeholder="Password" required>
+          <input name="Password" class="form-control" type="password" id="inputPassword" placeholder="Password" required>
       </div>
-      <button name="Submit" value="Login" type="submit">Sign in</button>     
+      <button name="Submit" class="btn" value="Login" type="submit">Sign in</button>     
     </div>
     </form>
   </div>
