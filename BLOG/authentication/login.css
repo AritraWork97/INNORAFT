@@ -31,8 +31,12 @@ title {
   
 }
 
+.form-content a{
+  color: white;
+}
+
 .form-content button {
-  margin: 38px 131px;
+  margin: 38px 38px;
   color: white;
     border: 1px solid white;
 }

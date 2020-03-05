@@ -17,6 +17,7 @@ phone.onkeypress = function(){
  $(document).ready(function(){
 
 $("#reenter_password").attr("disabled", "true");
+
    
 $('#firstname').blur(function(){
   var firstname = $('#firstname').val();

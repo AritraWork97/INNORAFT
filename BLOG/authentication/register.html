@@ -3,52 +3,52 @@
 <title>Registration Table</title>
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/PHP/BLOG/authentication/register.css">
 <body>
-    <form method="POST" id="userform" action="../authentication/register_user.php" enctype="multipart/form-data">
-        <table border="1" align="center" width="400" bgcolor="#CCCCCC" >
-            <caption>Registration form</caption>
-            <caption>All fields are required</caption>
-            <tr>
-                <th>Enter your first name</th>
-                <td><input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name"/></td>
-            </tr>
-            <tr>
-                <th>Enter your last name</th>
-                <td><input type="text" name="lastname" id="lastname" required/></td>
-            </tr>
-            <tr>
-                <th>Enter your password</th>
-                <td><input type="password" name="password" id="password" required/></td>
-            </tr>
-            <tr>
-                <th>ReEnter your password</th>
-                <td><input type="password" name="reenter_password" id="reenter_password" required/></td>
-            </tr>
-            <tr>
-                <th>Enter your email</th>
-                <td><input type="email" name="email" id="email" required/></td>
-            </tr>
-            <tr>
-                <th>Enter your mobile</th>
-                <td><input type="text" name="mobilenumber" id="mobilenumber" required/></td>
-            </tr>
-            <tr>
-                <th>Enter your address</th>
-                <td><textarea rows="8" cols="20" name="address" id="address" required></textarea></td>
-            </tr>
-            <tr>  
-                <td>Upload Image : </td>
-                <td>
-                <input required id="image" type="file" name="image" required>
-                </td>
-             </tr>
-            <td colspan="2" align="center">
-                <input id="submit"type="submit" value="Save My Data"/>
-                <input type="reset" value="Reset Data"/>
-            </td>
-            </tr>
-            </table>
-    </form>
+  <div class="container">
+    <div class="form-content">
+     <title>Registration Form</title>
+      <div class="form-input">
+        <form method="POST" id="userform" action="../authentication/register_user.php" enctype="multipart/form-data">
+          <div class="form-1">
+            <label for="firstname">Enter your first name</label>
+            <input type="text" name="firstname" id="firstname"  title="enter your first name" placeholder="enter your first name"/>
+          </div>
+          <div class="form-2">
+            <label for="lastname">Enter your lastname</label>
+            <input type="text" name="lastname" id="lastname" required/>
+          </div>        
+          <div class="form-3">
+            <label for="password">Enter your password</label>
+            <input type="password" name="password" id="password" required/>
+          </div>
+          <div class="form-4">
+            <label for="reenter_password" class="reenter">Reenter your password</label>
+            <input type="password" name="reenter_password" id="reenter_password" required/>
+          </div>
+          <div class="form-5">
+            <label for="email">Enter your email</label>
+            <input type="email" name="email" id="email" required/>
+          </div>
+          <div class="form-6">
+            <label for="mobilenumber">Enter your mobile number</label>
+            <input type="text" name="mobilenumber" id="mobilenumber" required/>
+          </div>
+          <div class="form-7">
+            <label for="address">Enter your address</label>
+            <textarea rows="8" cols="20" name="address" id="address" required></textarea>
+          </div>
+          <div class="form-8">
+            <label for="image">Upload Image</label>
+            <input required id="image" type="file" name="image" required>
+          </div>        
+          <div class="btn-group">
+              <button class="btn" id="submit"type="submit" value="Save My Data">Register</button>
+              
+          </div>
+        </form>
+      </div>
 </body>
 <script src="../authentication/register.js"></script>
 </html>

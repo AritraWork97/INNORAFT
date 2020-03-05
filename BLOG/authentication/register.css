@@ -1,0 +1,135 @@
+
+body {
+  background: url(2927262.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+title {
+  color: white;
+    display: inline-flex;
+    position: absolute;
+    top: 29%;
+    left: 47%;
+    font-size: large;
+}
+
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.btn-group {
+  margin-left: 135px;
+}
+
+
+.form-input {
+  
+  margin: 0 auto;
+    margin-left: 71px;
+    margin-right: -21px;
+}
+.form-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-top: 144px;
+  border: 1px solid #787373;
+  padding-top: 100px;
+  padding-right: 25px;
+  color: white;
+  
+}
+
+.form-content input textarea{
+  float: right;
+}
+
+.form-content a{
+  color: white;
+}
+
+.form-content button {
+  margin: 38px 38px;
+  color: white;
+    border: 1px solid white;
+}
+
+
+
+.form-group label {
+  margin-right: 6px;
+}
+
+.form-1 {
+  margin-bottom: 25px;
+  margin-left: 5px;
+}
+
+.form-2 {
+  margin-left: 5px;
+  margin-bottom: 25px;
+}
+
+.form-1 label {
+  margin-right: 55px;
+}
+
+.form-2 label {
+  margin-right: 58px;
+}
+
+.form-3 {
+  margin-bottom: 25px;
+  margin-left: 5px;
+}
+
+.form-4 {
+  margin-left: 5px;
+  margin-bottom: 25px;
+}
+
+.form-3 label {
+  margin-right: 55px;
+}
+
+.form-4 label {
+  margin-right: 34px;
+}
+
+.form-5 {
+  margin-bottom: 25px;
+  margin-left: 5px;
+}
+
+.form-6 {
+  margin-left: 5px;
+  margin-bottom: 25px;
+}
+
+.form-5 label {
+  margin-right: 82px;
+}
+
+.form-6 label {
+  margin-right: 12px;
+}
+
+.form-7 {
+  margin-bottom: 25px;
+  margin-left: 5px;
+}
+
+.form-8 {
+  margin-left: 5px;
+  margin-bottom: 25px;
+}
+
+.form-7 label {
+  margin-right: 62px;
+}
+
+.form-8 label {
+  margin-right: 96px;
+}
