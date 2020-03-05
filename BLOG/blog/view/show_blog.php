@@ -6,21 +6,20 @@ require_once '../BLOG/blog/controller/show_blog_controller.php';
   <head>
   </head>
   <link rel="stylesheet" href="/PHP/BLOG/blog/view/blog_post_style.css"></link>
-  <body>
-    <div class="main-div">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav" style="float: right; margin-top : 48px;">
-        <li class="nav-item active">
-          <a class="nav-link" href="index">Return to home page <span class="sr-only"></span></a>
-          <?php if(isset($_SESSION['Active']) == TRUE): ?>
-            <a class="nav-link" href="logout">Log out <span class="sr-only"></span></a>
-            <?php endif; ?>
-        </li>
-        </ul>
-        </div>
-      </nav>
-    </div>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav navigation-link">
+      <li class="nav-item active">
+          <a class="nav-link" href="index">Return to home page <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
+      </li>
+      </ul>
+      </div>
+    </nav>
     <div class="blogShort">
       <div class="blogShortContainer">
         <div class="blog-content">
@@ -28,7 +27,7 @@ require_once '../BLOG/blog/controller/show_blog_controller.php';
       <?php if(mysqli_num_rows($result) > 0): ?>
         <?php while($row = mysqli_fetch_array($result)): ?>
           <h1><?php echo $row['blog_title']; ?></h1>
-           <img src="<?php echo '../../'.$row['img_path'] ?>" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10" max-width="100%" height="75%">
+           <img src="<?php echo '../../'.$row['img_path'] ?>" alt="post img" class="" max-width="100%" height="75%">
            <article><p>
              <?php echo $row['blog_data'] ?>
              </p>
