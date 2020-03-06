@@ -1,9 +1,9 @@
 <?php
-require_once '../../../.cred/db_auth.php';
+require_once '../../../../.cred/db_auth.php';
 
 session_start();
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../home.php/login");
+    header("location:http://aritra.com/authentication/login.html");
     exit;
    }
 
@@ -16,7 +16,7 @@ $result = $conn->query($sql_blog_details);
 
 <html>
   <head>
-    <link rel="stylesheet" href="/PHP/BLOG/blog/view/show_my_post.css">
+    <link rel="stylesheet" href="show_my_post.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   </head>
   <body class="bg-light">
@@ -24,10 +24,10 @@ $result = $conn->query($sql_blog_details);
     <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav navigation-link">
      <li class="nav-item active">
-        <a class="nav-link" href="index">Return to home page <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://aritra.com">Return to home page <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://aritra.com/authentication/logout.php">Log out <span class="sr-only">(current)</span></a>
     </li>
     </ul>
     </div>
@@ -43,7 +43,7 @@ $result = $conn->query($sql_blog_details);
           <div class="card-body">
             <h5 class="card-title"><?php echo $row['blog_title'] ?></h5>
             <p class="card-text"><?php echo substr($row['blog_data'], 0, 6); ?></p>
-            <form action='../blog/controller/show_my_post_controller.php' method='POST'>
+            <form action='../controller/show_my_post_controller.php' method='POST'>
               <input class="form-control" type='submit' name='action' value='Edit'/>
               <input class="form-control" type='submit' name='action' value='Delete'>
               <input class="form-control" type='submit' name='action' value='Display'/>

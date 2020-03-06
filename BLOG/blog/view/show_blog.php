@@ -1,21 +1,21 @@
 <?php
-require_once '../BLOG/blog/controller/show_blog_controller.php';
+require_once '../controller/show_blog_controller.php';
 ?>
 
 <html>
   <head>
   </head>
-  <link rel="stylesheet" href="/PHP/BLOG/blog/view/blog_post_style.css"></link>
+  <link rel="stylesheet" href="blog_post_style.css"></link>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav navigation-link">
       <li class="nav-item active">
-          <a class="nav-link" href="index">Return to home page <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="http://aritra.com">Return to home page <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="logout">Log out <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="http://aritra.com/authentication/logout.php">Log out <span class="sr-only">(current)</span></a>
       </li>
       </ul>
       </div>

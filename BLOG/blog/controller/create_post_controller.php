@@ -1,12 +1,12 @@
 <?php
 
 include_once '../../validation.php';
-require_once '../../../../../.cred/db_auth.php';
+require_once '../../../../.cred/db_auth.php';
 
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../../home.php/login");
+    header("location:http://aritra.com/authentication/login.html");
     exit;
    }
 
@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            $errors[]='File size must be excately 2 MB';
         }
         $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
-        $target_path = 'uploads/'. basename($new_file_name);
+        $target_path = '../../BLOG/blog/controller/uploads/'. basename($new_file_name);
         $new_target_path = 'BLOG/blog/controller/uploads/'. basename($new_file_name);
         
         if(empty($errors)==true){
@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql_insert_blog_post = "insert into blog_post values('$userid','$blog_post_id','$author_name',
                                                           '$blog_title', '$current_time', '$blog_content', '$new_target_path')";
             if($conn->query($sql_insert_blog_post) == true){
-                header("location:../../home.php/index");
+                header("location:http://aritra.com");
             } else {
             echo $conn->error;
             echo "<br>";

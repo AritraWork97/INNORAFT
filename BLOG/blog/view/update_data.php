@@ -2,13 +2,18 @@
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
-    header("location:../../home.php/login");
+    header("location:http://aritra.com/authentication/login.html");
     exit;
 }
 
-include_once '../../../.cred/db_auth.php';
+include_once '../../../../.cred/db_auth.php';
 
 $userid = $_SESSION['userid'];
+$blog_id = "";
+
+if (isset($_GET['data'])) {
+  $blog_id =$_GET['data'];
+}
 
 $title = "";
 $content = "";
@@ -24,9 +29,7 @@ $sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where
                     $prev_image_path = $row['img_path'];
                     //print_r($prev_image_path);
                 }
-                mysqli_free_result($result);
             } else {
-                echo "You have not made any posts";
     }
 }
 
@@ -37,31 +40,37 @@ $sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="/PHP/BLOG/blog/view/update_data.css">
+<link rel="stylesheet" href="update_data.css">
 <body>
-<div class="container">
-    <div class="form-content">
-     <title>Update Data</title>
-        <form method="POST" action="../blog/controller/update_data_controller.php" enctype="multipart/form-data">
-          <div class="form-1">
-                <label for="title">Enter blog Title</label>
-                <input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/>
+<?php if (isset($_GET['data']) && mysqli_num_rows($result) > 0): ?>
+  <div class="container">
+      <div class="form-content">
+      <title>Update Data</title>
+          <form method="POST" action="../controller/update_data_controller.php" enctype="multipart/form-data">
+            <div class="form-1">
+                  <label for="title">Enter blog Title</label>
+                  <input type="text" name="title" id="title" maxlength="100" required value="<?php echo $title ?>"/>
+            </div>
+            <div class="form-2">
+                  <label for="content">Enter New blog content</label>
+                  <textarea rows="10" cols="20" name="content" id="content"><?php echo $content?></textarea>
+            </div>
+            <div class="form-3">
+                  <label for="content">Upload New Image</label>
+                  <input type="file" class="image" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
+            </div>
+            <input type="hidden" name = 'id' value='<?php echo $blog_id; ?>'/>
+            <div class="btn-group">
+                <button class="btn" id="submit"type="submit" value="Save My Data">Save My data</button>
           </div>
-          <div class="form-2">
-                <label for="content">Enter New blog content</label>
-                <textarea rows="10" cols="20" name="content" id="content"><?php echo $content?></textarea>
-          </div>
-          <div class="form-3">
-                <label for="content">Upload New Image</label>
-                <input type="file" class="image" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
-          </div>
-          <input type="hidden" name = 'id' value='<?php echo $blog_id; ?>'/>
-          <div class="btn-group">
-              <button class="btn" id="submit"type="submit" value="Save My Data">Save My data</button>
-         </div>
-    </form>
-    </div>
-</div>
+      </form>
+      </div>
+      <?php mysqli_free_result($result); ?>
+  </div>
+<?php else: ?>
+  <button type="button" class="btn btn-primary show-post"><a href="http://aritra.com/blog/view/show_my_post.php">Go back to My Post Page</a></button>
+  <h1 class="no-such-post">No such post exist</h1>
+<?php endif ?>
 </body>
 <script>
     $(document).ready(() => {

@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{QUERY_STRING} data=1
+RewriteRule ^blog/view/show_blog\.php$ /path-to-new-location/? [L,R=301]
+Redirect one clean URL to a new clean URL

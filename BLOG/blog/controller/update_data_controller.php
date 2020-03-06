@@ -1,7 +1,7 @@
 <?php
 
 include_once '../../validation.php';
-include_once '../../../../../.cred/db_auth.php';
+include_once '../../../../.cred/db_auth.php';
 
 $blog_title = "";
 $blog_content = "";
@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
            $errors[]='File size must be excately 2 MB';
         }
         $new_file_name = md5(uniqid(rand(), true)).'.'.$file_ext;
-        $target_path = 'uploads/'. basename($new_file_name);
+        $target_path = '../../BLOG/blog/controller/uploads/'. basename($new_file_name);
         $new_target_path = 'BLOG/blog/controller/uploads/'. basename($new_file_name);
         
         if (empty($errors)== TRUE) {
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $result1 = $conn->query($sql);
     if($result1 == true) {
         echo "Success";
-        header("location:../../home.php/index");
+        header("location:http://aritra.com");
     } 
     else {
         print_r($conn->error);

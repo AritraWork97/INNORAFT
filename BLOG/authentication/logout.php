@@ -4,5 +4,5 @@
   $_SESSION['userid'] = "";
   $_SESSION['username'] = "";
   session_destroy(); /* Destroy started session */
-  header("location:../home.php/login");  /* Redirect to login page */
+  header("location:http://aritra.com");  /* Redirect to login page */
   exit;

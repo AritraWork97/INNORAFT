@@ -144,3 +144,21 @@ title {
 .form-8 label {
   margin-right: 96px;
 }
+
+.show-post {
+  position: absolute;
+  top: 57%;
+  left: 43%;
+  background-color: transparent;
+  border-color: 1px solid black;
+}
+
+.show-post a{
+  color: #000000;
+}
+
+.no-such-post {
+  position: absolute;
+    top: 47%;
+    left: 39%;
+}

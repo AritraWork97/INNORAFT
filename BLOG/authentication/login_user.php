@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../../.cred/db_auth.php';
+require_once '../../../.cred/db_auth.php';
 include_once '../validation.php';
 
 $check_password = "";
@@ -39,7 +39,7 @@ if (isset($_POST['Submit'])) {
         $_SESSION['username'] = $name;
 
         $_SESSION['Active'] = true;
-        header("location:../home.php/index");
+        header("location:../home.php");
         exit;
 
     } else {

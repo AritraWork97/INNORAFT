@@ -23,7 +23,7 @@ $('#firstname').blur(function(){
   var firstname = $('#firstname').val();
   $.ajax({
    type: 'POST',
-   url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+   url : 'http://aritra.com/authentication/form_validation.php',
    data: {"firstname" : firstname},
    success: function(response){
       if(response == "true")
@@ -43,7 +43,7 @@ $('#firstname').blur(function(){
    var lastname = $('#lastname').val();
    $.ajax({
     type: 'POST',
-    url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+    url : 'http://aritra.com/authentication/form_validation.php',
     data: {"lastname" : lastname},
     success: function(response){
        if(response == "true")
@@ -63,7 +63,7 @@ $('#password').blur(function(){
    var password = $('#password').val();
    $.ajax({
     type: 'POST',
-    url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+    url : 'http://aritra.com/authentication/form_validation.php',
     data: {"password" : password},
     success: function(response){
        if(response == "true")
@@ -86,7 +86,7 @@ $('#reenter_password').blur(function(){
    var password = $("#password").val();
    $.ajax({
     type: 'POST',
-    url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+    url : 'http://aritra.com/authentication/form_validation.php',
     data: {"password" : password,
           "check_password" : check_password},
     success: function(res){
@@ -108,7 +108,7 @@ $('#reenter_password').blur(function(){
    var email = $('#email').val();
    $.ajax({
     type: 'POST',
-    url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+    url : 'http://aritra.com/authentication/form_validation.php',
     data: {"email" : email},
     success: function(response){
        if(response == "true")
@@ -128,7 +128,7 @@ $('#reenter_password').blur(function(){
       var mobile = $('#mobilenumber').val();
       $.ajax({
        type: 'POST',
-       url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+       url : 'http://aritra.com/authentication/form_validation.php',
        data: {"mobilenumber" : mobile},
        success: function(response){
           if(response == "true")
@@ -152,7 +152,7 @@ $('#reenter_password').blur(function(){
    var address = $('#address').val();
    $.ajax({
     type: 'POST',
-    url : 'http://localhost/PHP/BLOG/authentication/form_validation.php',
+    url : 'http://aritra.com/authentication/form_validation.php',
     data: {"address" : address},
     success: function(response){
        if(response == "true")

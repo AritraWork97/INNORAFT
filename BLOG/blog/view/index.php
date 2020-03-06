@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../.cred/db_auth.php';
+require_once '../../.cred/db_auth.php';
 
 session_start();
 
@@ -33,18 +33,18 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
 
     if ($url == '/PHP/BLOG/home.php') {
       $form_url = '../BLOG/blog/controller/index_controller.php';
-      $login_url = '../BLOG/home.php/login';
-      $logout_url = "../BLOG/home.php/logout";
+      $login_url = 'authentication/login.html';
+      $logout_url = "authentication/logout";
       $register_url = '../BLOG/home.php/register';
-      $show_my_post_url = "../BLOG/home.php/show_my_posts";
+      $show_my_post_url = "blog/view/show_my_post.php";
       $add_post_url = "../BLOG/home.php/create_post";
     } else {
-      $form_url = '../blog/controller/index_controller.php';
-      $login_url = 'login';
-      $register_url = 'register';
-      $show_my_post_url = "show_my_posts";
-      $add_post_url = "create_post";
-      $logout_url = "logout";
+      $form_url = 'blog/controller/index_controller.php';
+      $login_url = 'authentication/login.html';
+      $register_url = 'authentication/register.html';
+      $show_my_post_url = "blog/view/show_my_post.php";
+      $add_post_url = "blog/view/create_post.php";
+      $logout_url = "authentication/logout.php";
     }
 
 ?>
@@ -52,7 +52,7 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="/PHP/BLOG/blog/view/style.css">
+        <link rel="stylesheet" href="blog/view/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </head>
@@ -62,7 +62,7 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
       <div class="collapse navbar-collapse" id="navbarNav">
       <div class="user">
         <?php if(isset($_SESSION['Active']) == TRUE): ?>
-            <img src="<?php echo '/PHP/'.$img_path ?>">
+            <img src="<?php echo './'.$img_path ?>">
             <h5><?php echo $fullname ?></h5>
             <a class="nav-link" href="<?php echo $logout_url?>">Log out <span class="sr-only">(current)</span></a>
         <?php endif; ?>
@@ -91,7 +91,7 @@ $sql_blog_details = "SELECT blog_post.userid, blog_post.img_path,blog_post.blog_
             <?php if(mysqli_num_rows($result) > 0): ?>
               <?php while($row = mysqli_fetch_array($result)): ?>
                 <a class='card cont'>
-                  <img src="<?php echo '/PHP/'.$row['img_path'] ?>" width='100px' height='100px'>
+                  <img src="<?php echo './'.$row['img_path'] ?>" width='100px' height='100px'>
                   <h1><?php echo $row['blog_title'] ?></h1>
                   <p><?php echo substr($row['blog_data'], 0, 6); ?></p>
                   <form action='<?php echo $form_url?>' method='POST'>
