@@ -2,8 +2,9 @@
 <head>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="create_post.css">
+<link rel="stylesheet" href="/blog/view/create_post.css">
 <body>
+<?php if (strlen(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) <= 27) : ?>
   <div class="container">
     <div class="form-content">
      <title>Create Post</title>
@@ -26,5 +27,8 @@
       </form>
     </div>
   </div>
+<?php else: ?>
+  <?php include '../../error.html'; ?>
+<?php endif ?>
 </body>
 </html>

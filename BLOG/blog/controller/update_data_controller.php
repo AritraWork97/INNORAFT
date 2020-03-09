@@ -7,11 +7,20 @@ $blog_title = "";
 $blog_content = "";
 $new_target_path = "";
 $current_time = "";
+$isImage = FALSE;
+$form_id = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST['id'])) {
     $form_id = $_POST['id'];
+  }
+  if (isset($_POST['title'])) {
     $blog_title = test_input($_POST['title']);
+  }
+  if (isset($_POST['content'])) {
     $blog_content = test_input($_POST['content']);
+  }
+    
     $current_time = date("Y/m/d");
     $sql_blog_details = "SELECT img_path FROM blog_post where blog_post_id = '".$form_id."'";
     $result = $conn->query($sql_blog_details);
@@ -24,11 +33,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     //print_r($prev_image_path);
                 }
                 mysqli_free_result($result);
-            } else {
-                echo "You have not made any posts";
-    }
+            } 
 }
     if(isset($_FILES['image'])){
+        $isImage = TRUE;
         $errors= array();
         $file_name = $_FILES['image']['name'];
         $file_size =$_FILES['image']['size'];
@@ -58,15 +66,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
            $new_target_path = $prev_image_path;
         }
     }
-    $sql = "UPDATE blog_post SET blog_title='".$blog_title."', blog_date='".$current_time."', img_path='".$new_target_path."',blog_data='".$blog_content."' WHERE blog_post_id='".$form_id."'";
+    if(empty($errors) == TRUE && $isImage == true)
+    {
+      $sql = "UPDATE blog_post SET blog_title='".$blog_title."', blog_date='".$current_time."', img_path='".$new_target_path."',blog_data='".$blog_content."' WHERE blog_post_id='".$form_id."'";
 
-    $result1 = $conn->query($sql);
-    if($result1 == true) {
-        echo "Success";
-        header("location:http://aritra.com");
-    } 
-    else {
-        print_r($conn->error);
+      $result1 = $conn->query($sql);
+      if($result1 == true) {
+          echo "Success";
+          header("location:http://aritra.com");
+      } 
+      else {
+          print_r($conn->error);
+      }
+    } else {
+      $loc = "/blog/view/show_my_post.php";
+      echo "<script>";
+            echo " if(confirm('There were some errors, redirecting you to your post page'))
+                    {
+                        window.location.href = '$loc';
+                    }
+                </script>";
     }
- 
 }

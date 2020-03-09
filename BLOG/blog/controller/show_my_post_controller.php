@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if($_POST['action'] == 'Delete') {
         $blog_id = $_POST['id'];
@@ -15,7 +17,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                $id = $_POST['id'];
                header("location: http://aritra.com/blog/view/update_data.php?data=".$id);
            }  else if($_POST['action'] == 'Display') {
-               header("location:http://aritra.com/blog/view/show_blog.php?data=".$_POST['id']);
+                $id = $_POST['id'];
+                header("location:http://aritra.com/blog/view/show_blog.php?data=".$id);
            } 
            
 

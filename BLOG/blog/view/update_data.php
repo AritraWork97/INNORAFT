@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if(isset($_SESSION['Active']) == false){ /* Redirects user to Login.php if not logged in */
@@ -11,9 +12,8 @@ include_once '../../../../.cred/db_auth.php';
 $userid = $_SESSION['userid'];
 $blog_id = "";
 
-if (isset($_GET['data'])) {
-  $blog_id =$_GET['data'];
-}
+
+$blog_id =$_GET['data'];
 
 $title = "";
 $content = "";
@@ -42,7 +42,7 @@ $sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="update_data.css">
 <body>
-<?php if (isset($_GET['data']) && mysqli_num_rows($result) > 0): ?>
+<?php if (mysqli_num_rows($result) > 0): ?>
   <div class="container">
       <div class="form-content">
       <title>Update Data</title>
@@ -57,7 +57,7 @@ $sql_blog_details = "SELECT blog_title, img_path, blog_data FROM blog_post where
             </div>
             <div class="form-3">
                   <label for="content">Upload New Image</label>
-                  <input type="file" class="image" name="image" value=""><span class="input-class"><?php echo $prev_image_path?></span>
+                  <input type="file" class="image" name="image" value="" accept="image/*"><span class="input-class"><?php echo $prev_image_path?></span>
             </div>
             <input type="hidden" name = 'id' value='<?php echo $blog_id; ?>'/>
             <div class="btn-group">

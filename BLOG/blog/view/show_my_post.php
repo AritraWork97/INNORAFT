@@ -16,10 +16,11 @@ $result = $conn->query($sql_blog_details);
 
 <html>
   <head>
-    <link rel="stylesheet" href="show_my_post.css">
+    <link rel="stylesheet" href="/blog/view/show_my_post.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   </head>
   <body class="bg-light">
+  <?php if (strlen(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) <= 27) : ?>
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav navigation-link">
@@ -60,6 +61,9 @@ $result = $conn->query($sql_blog_details);
         <?php endif ?>
     </div>
   </div>
+  <?php else: ?>
+      <?php include '../../error.html'; ?>
+    <?php endif ?>
   </body>
 </html>
 

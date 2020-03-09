@@ -6,9 +6,11 @@ session_start();
 
 $blog_id = "";
 
+
 if (isset($_GET['data'])) {
-  $blog_id =$_GET['data'];
+  $blog_id = $_GET['data'];
 }
+
 
 
 

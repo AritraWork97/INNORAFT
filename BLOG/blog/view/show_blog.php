@@ -5,7 +5,7 @@ require_once '../controller/show_blog_controller.php';
 <html>
   <head>
   </head>
-  <link rel="stylesheet" href="blog_post_style.css"></link>
+  <link rel="stylesheet" href="/blog/view/blog_post_style.css"></link>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
