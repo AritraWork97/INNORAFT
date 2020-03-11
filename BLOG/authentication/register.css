@@ -13,6 +13,12 @@ title {
     font-size: large;
 }
 
+.feilds-required {
+  margin-top: 25px;
+  margin-left: 9px;
+  font-size: small;
+}
+
 
 .container {
   display: flex;
